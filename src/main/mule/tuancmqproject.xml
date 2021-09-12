@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd"></mule>
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="tuancmqprojectFlow" doc:id="30e8de5c-6f4d-453a-95d1-334027f60ce5" >
+		<http:listener doc:name="Listener" doc:id="7b90be82-05ea-4f55-874e-d3c4e95ef966" config-ref="HTTP_Listener_config" path="/hello"/>
+		<set-payload value='#["BEST"]' doc:name="Set Payload" doc:id="2f4dfb19-c58a-42e3-bf65-9c9466ead01e" />
+	</flow>
+</mule>
