@@ -1,0 +1,204 @@
+For CTE
+
+Shared Secret
+}dMLZF+K8k+EqwC1PI}y18/NIkvsIpCGcx5dLtwJ
+
+API Key
+G2JSEFMAYGLASPWQ4SOC21cAbAYOZlL1r6CJkHX8Es7_uZFEY
+
+
+UAT:
+
+VPBtest.pem => file dùng để ký chiều request và giải mã phần response
+CTE - signing-715ea257.sbx.digital.visa.com-leaf => file dùng để mã hóa  chiều request và giải mã phần response
+
+Vì file CTE - signing-715ea257.sbx.digital.visa.com-leaf  là BEGIN CERTIFICATE nên phải  export ra PUBLIC KEY để dùng :
+    openssl x509 -pubkey -noout -in CTE-signing-715ea257.sbx.digital.visa.com-leaf.pem  > CTE-signing-715ea257-publickey.pem
+
+Data Gốc :
+
+Subject: CN=sign-715ea257.sbx.digital.visa.com,OU=Outbound Client,O=Visa Inc,L=Foster City,ST=CA,C=US
+Issuer: CN=Visa Information Delivery External CA,OU=Visa International Service Association,O=VISA,C=US
+-----BEGIN CERTIFICATE-----
+MIIFDDCCA/SgAwIBAgIQIISZYW9bKlHFp2ib9WuI1TANBgkqhkiG9w0BAQsFADB9
+MQswCQYDVQQGEwJVUzENMAsGA1UEChMEVklTQTEvMC0GA1UECxMmVmlzYSBJbnRl
+cm5hdGlvbmFsIFNlcnZpY2UgQXNzb2NpYXRpb24xLjAsBgNVBAMTJVZpc2EgSW5m
+b3JtYXRpb24gRGVsaXZlcnkgRXh0ZXJuYWwgQ0EwHhcNMjIwODI0MTYxNDA3WhcN
+MjQxMTIxMTYxNDA2WjCBijEUMBIGA1UEBwwLRm9zdGVyIENpdHkxCzAJBgNVBAgM
+AkNBMQswCQYDVQQGEwJVUzERMA8GA1UECgwIVmlzYSBJbmMxGDAWBgNVBAsMD091
+dGJvdW5kIENsaWVudDErMCkGA1UEAwwic2lnbi03MTVlYTI1Ny5zYnguZGlnaXRh
+bC52aXNhLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMZld+pt
+VonS8NGBb+setSll9wlMDz/ottwrmSL5fDr6rawqetHPRFytHr5vI2XyUZD/m5oV
+GS95wNwef4OUXonpVG1tVEy2Eq8EIJdBnmZIOi+w2wSD2qyGa0cJ+Ab44P8MaUeL
+vHNpafnEp5mpJTZeoWF4zCnc/CAf1HoqPvO5Q5Vw+rlOwhp87FdfXHr+YgiTFOgV
+zNrnh9TIyDjPQZ58Qrwf+PmC1w6SgLtsfp0zOBtbfFfLkhqkfV8HviS268OfaPlG
+Bow3vt8QAKaBS1IibQ7CuZVqbDn7ptiTAiID39SyRVW9E78puHRGZ4gM1zLXr4Er
+nI/0ntbH2FeiXnECAwEAAaOCAXgwggF0MAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgw
+FoAUGTpSZs0pH+P6yzR9FnYhAtpPuRgwZQYIKwYBBQUHAQEEWTBXMC4GCCsGAQUF
+BzAChiJodHRwOi8vZW5yb2xsLnZpc2FjYS5jb20vdmljYTMuY2VyMCUGCCsGAQUF
+BzABhhlodHRwOi8vb2NzcC52aXNhLmNvbS9vY3NwMDkGA1UdIAQyMDAwLgYFZ4ED
+AgEwJTAjBggrBgEFBQcCARYXaHR0cDovL3d3dy52aXNhLmNvbS9wa2kwEwYDVR0l
+BAwwCgYIKwYBBQUHAwIwXQYDVR0fBFYwVDAooCagJIYiaHR0cDovL0Vucm9sbC52
+aXNhY2EuY29tL1ZJQ0EzLmNybDAooCagJIYiaHR0cDovL2NybC5pbm92LnZpc2Eu
+bmV0L1ZJQ0EzLmNybDAdBgNVHQ4EFgQU+FJAx/SaBM8db60XDqnOxEuE/pYwDgYD
+VR0PAQH/BAQDAgeAMA0GCSqGSIb3DQEBCwUAA4IBAQA0NduimrM9lP7LpaKZByLj
+cFGemz4jFDG/CU5eSXg3KAW4VLR8rl0MHdvPT8ALL8i9gO2VfTSNNLCkE3EekYtW
+VKy21dHmINfGsYJGCmYp5OPrYkBsFDO0XYbKHV17ptF+QVhD9YC0UKRhQFQPYZ8t
+axpqbwOCPQ1LDgtzlErb6W++4xl5mALSQojgQ3EIiqme7tTnjg7Esaknnklg1Ehy
+ZV1rikAewVYlBwOspAxgnPRv6qBtkLnivG8QW8xLFLur9GiSHh3URiKM/VJ1Qs/X
+NAEbMR9crEjJd23x/09K6bOi8c/LnXIIPwZaRPvDEOWbExsHS7LEs4QkYi//cHAX
+-----END CERTIFICATE-----
+
+Sau khi convert
+
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxmV36m1WidLw0YFv6x61
+KWX3CUwPP+i23CuZIvl8OvqtrCp60c9EXK0evm8jZfJRkP+bmhUZL3nA3B5/g5Re
+ielUbW1UTLYSrwQgl0GeZkg6L7DbBIParIZrRwn4Bvjg/wxpR4u8c2lp+cSnmakl
+Nl6hYXjMKdz8IB/Ueio+87lDlXD6uU7CGnzsV19cev5iCJMU6BXM2ueH1MjIOM9B
+nnxCvB/4+YLXDpKAu2x+nTM4G1t8V8uSGqR9Xwe+JLbrw59o+UYGjDe+3xAApoFL
+UiJtDsK5lWpsOfum2JMCIgPf1LJFVb0Tvym4dEZniAzXMtevgSucj/Se1sfYV6Je
+cQIDAQAB
+-----END PUBLIC KEY-----
+
+
+Vì file VPBTest.pem là Encrypted private key, cần chuyển sang rsa private key
+
+Data File VPBTest.pem
+
+-----BEGIN ENCRYPTED PRIVATE KEY-----
+MIIFHDBOBgkqhkiG9w0BBQ0wQTApBgkqhkiG9w0BBQwwHAQIb8Y1p5Khed4CAggA
+MAwGCCqGSIb3DQIJBQAwFAYIKoZIhvcNAwcECBgGwdFEaxWRBIIEyHrYHnXf2Iuy
+qaDC5q29G6QFTHaiT8ke1V4p+dkMcZB7wIt0MO2aUfLPuX9Akvkwfyv/T4XxyupI
+0SMP3r6P4SQWeO7Ni8b2Y4C8t83CW91zJ4nBnapD7J4BVaqJPr+t2NgZtHDYitoZ
+2v9FTiP78mLWq2zgkQpWzvgfBD1LFFir9bW2/gzLrHMM3y+21dmF+eYgjVnK3pm3
+PMfHZ7bHgij13R1NtaLU177WzFuTtBZV4pJ7RpCAM4cPsA9t1t8lC6UHrD1t1V2x
+grwfxLKJihnEHHguCHnnCdO6V4waS9+GrQDrHkb2AbnMZpx1dzebgry0huyscBJj
+7gmHgYyg6e5BpjE5JguBmKw1PCHfEqSwFLNE1AMNhj89tgkPS+WFdxy/u70gZnr7
+fVlQpWfg+MCasJ3W2bBQjzZZMrK0AlE0EsNKCfNZNlD99PJMKVIG2KK3P4NR3d30
+z/i6gOwyWl4hbvGyFkz74M863nY6nGffwzp85ADM2aM5050pXgJaKpC48SCSlaEc
+0zDL/R8P0o+LVZSQgKcBM5ftaiyH5/pBvjYVORyKljJW9NsBUXnzKyhTeIVfV9Qv
+9T8PxousLgK/eSC43REmho8FmCOr4CfM39nnVMuxoa16uzCFSRY+c5KLl4f5ofxp
++l5taI4D0+tlDiW4Hyy8lKucjZeGBTYZYRt4N4f6hl9z2X3p9WMu5sPckkN5QTlh
+cQFpTwPlR6DoJ/qm2gCdQ3urkdrMgXhrgrFCXC4OtWyPQQIJWROUE0Ykqi+n8nP9
+1unqvTYSMNA48fF3QvbJxQ8GJz3pKALgB81hMTaaGAlmxj0yq01m3e+Aq+yVK5qo
+gOU6DQE2aPsFiISXNkMHpliKJpKmD1Ou40N3wH0HCArWubExLSSPROAmkFJuWNOj
+Z82TxiYIl1kl/goBx24E3sWs7QJVKHKdIgnk99M/9RFwHB50038Xr4FwVw1gDyNB
+JThF1NCVOmXgOAGDuUjKrhRUxQZZ9wvTEv++ZD4A21L8IKw7qnY1eve4COHA2WG2
+5pQp5sIo8EZY7FYz5SYd19zDGLbx+nJG8nozooNyUz7ReJUlYsQypgByk/P6+eIw
++nBswPiT7xRwPN0K9eIdyzmjotDvC0Aw0C1TwowD9UwwgnlnriGDWAVkzr49svBV
+3ye+0zldO2ETLU45IKwdsQfIJcS8zrznNDz4XQ81XrZ2CszsNTu3getpIbiuqnMv
+4hq3+5fifywpNzjdAIJkiuo+w2vG/WCEDQAEU7AG83SW6xETsAwsn8UgIXuv18PR
+N3XdnYaEu5sLEYOqZVoQKf5NdC4hoVMBxJlQ/okLRfvd+2m6xAZILWTGRt9zHF6I
+avHipomHDDszGlS+KRqxlqHL/IGeEstGXt0xNzDTy8jjeh8R6tC0rFh2M9zdwJZX
+JEaDopK3cuzbup8mHibA3/R4CkbQxJCoOhfKHmWQRIOV9sseNJXvll317XhU7JWZ
+xQaPSIFdJOf2ACL+lT6ZVsIrKQfkIEnLJAfliP6zQm9hoGbKDgobFFENtOMjssxj
+o6MKq8pB/r+vyNq6y0b0ZiSusyJnqZ1wFQvWZGKVjlYHD1r+Qjia+YcEe0boVCXw
+gpNyVWUwkKI1ZKUTf3R/uQ==
+-----END ENCRYPTED PRIVATE KEY-----
+
+
+openssl rsa -in VPBtest.pem -out VPBtest.pem
+
+-----BEGIN RSA PRIVATE KEY-----
+MIIEowIBAAKCAQEAzkPFtvcqAaxnjoXf08VFiw9p5/gRUy33O25/3GGkFOayPgxt
+NiL8U16IOntS9QGtXCmC23rxRHDlA1zvzvhykijXM9e3mtEtjBsfZhIS+8muOjOT
+t+2WeRq5ItkAFFyMPWslVIIitAbJD+fALbQBFW+ctJtBWXGV1CqjaGTOKGLg3N6C
+TfwYpzCZE8UwExMm8upuHTb7n8N63kv/8UbmXYNQlGAYur3OmAU5DPsoDVbsfP7A
+x3IECOjErh1iaz5joskacrl+9GlOmlkzgCKIytFoD08a1LDKcUuEyngfwFYqTjgf
+yA1fj9nB1jWS7Y2VU8TrjLprxTnxGTDJsNxXxwIDAQABAoIBAH4ORSLQYserCY68
+mlHd2eZmgR7XKB9hlBqqKVISCikL5BqvlX7kWrjIqRC0lbpOUBhm9iYUOKbPJ+aq
+QZSHmd1hQEParcbb164sVUAYA6oFU4kWREy/0poojsSRQc8v0DUo6iN/dJ35F5+0
+zmof/BmRoH9v8rwrAporhLokASoESmw+7myCELv8qkXXkz7n8gFYinz8VHodRDo4
+0bww6KrqZL/t9FJDq4R2jUz+urQqsCy3t8a2BAwRHz+ogn9PDQmP/6bLT1+z7i43
+uQIPCy9U2RKxgUlngwBXWmOvLWi7UVpJIX0j2ZME1x/13ThWT9kgfrjh547Dk5XM
+TxMosqECgYEA9DLTtOipfZDsqJSAOVNfZmxrcVfOuzV1/Xk8tJ4FSupQyBkplMQi
+KzYa3jKg88L+lGOo6q0xzP7KS/ygH77tzEQvk0/JZh0D95GGxtwgA4iht453sl1x
+W2BM9DwPL206/v3QMXFAMbuDfjYwbQchI2YU9Zfm2kCVqiVJie6MYisCgYEA2Dui
+4catg2YnD2QusDG8LuoWf0EOP0zdPJyinDZFsUJylHuaz/JC/KKcmFgJ0wQUJ8gV
+tjSMLom9p41dcQ1oUKXfjCfARfkY6KyxWI8yu0QT+PZhhRT9V1dj5NSbMi9pCEB2
+RoEbHV8mKMzotdOvqKulbaAlM0ZXTmJGlPn4/tUCgYAQsHSVlZ0XztLNxrBoupD3
+kAtbyLOBSesRcrq6YV5dO1xgAJA98ZWgPGdjrjQf1MDPZWxC9alEqFktDkvnP4ZD
+Apn5yGcsSmld/x0l9B9f/nOG9v6pOwenRhKcUop7JEz25mPXLTVE8NrQwmVW3jje
+kXh3PHVzjxxrb3byLVJ81wKBgQC9UCkhBrMvUaZtAUcnF8QsRuJ/c1On9AHWaUSt
+A48szIJIoZc+7FndmfkEIEApsW58Dd+EcKkyrYGQSmI+8oAb6722la7vFFHMlDWI
+1YaTEd1yoTNsMp5Dc82PsNxXqc6JXPawb6RvqLheDFjJqJYoVG83dXhcVf9mLwCg
+ueJYKQKBgBx5wvUzEMXq82fbN1rzAVWu/DsQZR8TgiE7akc4nH5zJUQKFOi8UMat
+7oUShMt7mjBq9Tc1sB5mx86S1arxC2/FifrNlAMlgr7yC9n+bW4p4SlsNEK/TaXS
+qkgkcsLTKqXSxp1evMXxfRkq0yky7cPJB2xXo118te8r++qtmzp1
+-----END RSA PRIVATE KEY-----
+
+convert rsa private key to Privare key
+
+openssl rsa -in private.pem -out private.key
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+using System;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
+
+namespace VISAEncryption
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+
+            string txtResourcePath = "/vtis/v1/pan/retrieveTokenInfo";
+            string txtQueryString = "apiKey=G2JSEFMAYGLASPWQ4SOC21cAbAYOZlL1r6CJkHX8Es7_uZFEY";
+            string txtRequestBody = File.ReadAllText(@"D:\Vpbank\ToolByTuanCMQ\VISAEncryption\json1.json");
+            string xpayToken = getXPayToken(txtResourcePath, txtQueryString, txtRequestBody);
+            Console.WriteLine("xpayToken : " + xpayToken);
+            int i = 0;
+        }
+
+        private static string getTimestamp()
+        {
+            long timeStamp = ((long)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds) / 1000;
+            return timeStamp.ToString();
+        }
+
+        private static string getHash(string data)
+        {
+            string SHARED_SECRET = "}dMLZF+K8k+EqwC1PI}y18/NIkvsIpCGcx5dLtwJ";
+            var hashString = new HMACSHA256(Encoding.ASCII.GetBytes(SHARED_SECRET));
+            var hashbytes = hashString.ComputeHash(Encoding.ASCII.GetBytes(data));
+            string digest = String.Empty;
+
+            foreach (byte b in hashbytes)
+            {
+                digest += b.ToString("x2");
+            }
+
+            return digest;
+        }
+
+        private static string getXPayToken(string resourcePath, string queryString, string requestBody)
+        {
+            string timestamp = getTimestamp();
+            string sourceString = timestamp + resourcePath + queryString + requestBody;
+            string hash = getHash(sourceString);
+            string token = "xv2:" + timestamp + ":" + hash;
+            return token;
+        }
+    }
+}
