@@ -5,3 +5,8 @@ openssl rsa -in vpbPrivateRSA.key -out private_key_pkcs1.key -outform der
 
 keytool -v -list -keystore vpbPrivate.pfx  -storetype PKCS12 -storepass haint83vn
 keytool -exportcert -keystore vpbPrivate.pfx -storetype PKCS12 -storepass haint83vn -alias "vpbank certification" -file vpbankPublicCerForVPS2024.key
+
+@Quoc Tuan ơi dùng openssl gen key nhé
+1. openssl.exe genpkey -algorithm RSA -out D:\\opensslKeyGen\private_key.pem
+2. openssl.exe rsa -in D:\\opensslKeyGen\private_key.pem -pubout -out D:\\opensslKeyGen\public_key.pem
+3. openssl.exe rsa -pubout -in D:\\opensslKeyGen\private_key.pem -outform DER -out D:\\opensslKeyGen\public_key.key
