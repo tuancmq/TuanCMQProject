@@ -22,3 +22,16 @@ Body
   "statusCode": 500,
   "message": "Object reference not set to an instance of an object."
 }
+
+
+Thu Apr 04 2024 15:22:22 [0x8580005c][gatewayscript-user][notice] mpgw(GICMigrateSyncMPG): tid(57692656)[request][10.37.9.24] gtid(test1121222): path:
+/api/PublicApi/GetInsurancePackageFromProductCode?accessKey=0abbc84a-9805-4af9-8f34-7b039ea873f6&code=API_VP_HTNV
+Thu Apr 04 2024 15:22:22 [0x8580005c][gatewayscript-user][notice] mpgw(GICMigrateSyncMPG): tid(57692656)[request][10.37.9.24] gtid(test1121222): Final request to backend URL : http://bancasuat.gic.vn:8081/api/PublicApi/GetInsurancePackageFromProductCode?accessKey=0abbc84a-9805-4af9-8f34-7b039ea873f6&code=API_VP_HTNV
+With Header params:
+{"headers":{"Content-Length":"2","X-Global-Transaction-ID":"test1121222","Content-Type":"application/json;charset=utf-8","Host":"10.37.16.151:8194","SOAPAction":"\"\"","Via":"1.1 AwAAAKH+Txg-","X-Client-IP":"10.37.9.24"}}
+Thu Apr 04 2024 15:22:22 [0x80c0003f][all][notice] mpgw(GICMigrateSyncMPG): tid(57692656)[request][10.37.9.24] gtid(test1121222): e30=
+Thu Apr 04 2024 15:22:22 [0x00340027][multistep][warn] mpgw(GICMigrateSyncMPG): tid(57692656)[response][10.37.9.24] gtid(test1121222): Multistep Probe enabled
+Thu Apr 04 2024 15:22:22 [0x8580005c][gatewayscript-user][notice] mpgw(GICMigrateSyncMPG): tid(57692656)[response][10.37.9.24] gtid(test1121222): uri: http://10.37.16.151:8194/api/PublicApi/GetInsurancePackageFromProductCode?accessKey=0abbc84a-9805-4af9-8f34-7b039ea873f6&code=API_VP_HTNV | headers: {"headers":{"Content-Type":"application/json","Server":"Kestrel","Access-Control-Allow-Origin":"*","X-Powered-By":"ASP.NET","Date":"Thu, 04 Apr 2024 07:22:22 GMT","X-Global-Transaction-ID":"test1121222"},"statusCode":500,"reasonPhrase":"Internal Server Error"} | body: {
+  "statusCode": 500,
+  "message": "Object reference not set to an instance of an object."
+}
