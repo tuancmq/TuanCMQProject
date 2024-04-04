@@ -1,37 +1,137 @@
-
-openssl pkcs12 -in vpbPrivate.pfx -nocerts -nodes -out vpbPrivateRSA.key
-openssl rsa -in vpbPrivateRSA.key -pubout -out vpbankPublicForVPS2024.pem
-openssl rsa -in vpbPrivateRSA.key -out private_key_pkcs1.key -outform der
-
-keytool -v -list -keystore vpbPrivate.pfx  -storetype PKCS12 -storepass haint83vn
-keytool -exportcert -keystore vpbPrivate.pfx -storetype PKCS12 -storepass haint83vn -alias "vpbank certification" -file vpbankPublicCerForVPS2024.key
-
-@Quoc Tuan ơi dùng openssl gen key nhé
-1. openssl.exe genpkey -algorithm RSA -out D:\\opensslKeyGen\private_key.pem
-2. openssl.exe rsa -in D:\\opensslKeyGen\private_key.pem -pubout -out D:\\opensslKeyGen\public_key.pem
-3. openssl.exe rsa -pubout -in D:\\opensslKeyGen\private_key.pem -outform DER -out D:\\opensslKeyGen\public_key.key
-
-http://bancasuat.gic.vn:8081/api/PublicApi/GetInsurancePackageFromProductCode?accessKey=0abbc84a-9805-4af9-8f34-7b039ea873f6&code=12331111
-
-
-Header
-
-{"headers":{"Content-Type":"application/json","Server":"Kestrel","Access-Control-Allow-Origin":"*","X-Powered-By":"ASP.NET","Date":"Thu, 04 Apr 2024 05:28:29 GMT","X-Global-Transaction-ID":"?"},"statusCode":500,"reasonPhrase":"Internal Server Error"}
-Body 
-{
-  "statusCode": 500,
-  "message": "Object reference not set to an instance of an object."
+Thu Apr 04 2024 18: 53: 46 [
+    0x00340027
+][multistep
+][warn
+] mpgw(VBIMigrateSyncMPG): tid(58007888)[request
+][
+    10.37.9.26
+] gtid(1712228024752): Multistep Probe enabled
+Thu Apr 04 2024 18: 53: 46 [
+    0x8580005c
+][gatewayscript-user
+][notice
+] mpgw(VBIMigrateSyncMPG): tid(58007888)[request
+][
+    10.37.9.26
+] gtid(1712228024752): path:
+/api/p/input-order
+Thu Apr 04 2024 18: 53: 46 [
+    0x8580005c
+][gatewayscript-user
+][notice
+] mpgw(VBIMigrateSyncMPG): tid(58007888)[request
+][
+    10.37.9.26
+] gtid(1712228024752): original bank/contracts body request : {
+    "dtac_key": "VPBANKCCE978035456097CC77D6140UTV",
+    "nsd": "vpbank.utv@gmail.com",
+    "so_id_dtac": "2487671111123",
+    "nv": "UTV",
+    "ten": "thao",
+    "dchi": "hn",
+    "ngay_sinh": "19620303",
+    "cmt": "123456784",
+    "d_thoai": "0962876641",
+    "email": "thao99@gmail.com",
+    "mst": "122",
+    "trang_thai_tt": "C",
+    "gcns": [
+        {
+            "goi_bh": "UNG_THU_VU_CT1",
+            "ten": "thao",
+            "dchi": "hn",
+            "ngay_sinh": "19620303",
+            "gioi_tinh": "NU",
+            "cmt": "123456784",
+            "ngay_hl": "20200915",
+            "ngay_kt": "20210915",
+            "cau_hoi": "",
+            "tra_loi": "",
+            "moi_qh": "QH00000"
+        }
+    ]
 }
-
-
-Thu Apr 04 2024 15:22:22 [0x8580005c][gatewayscript-user][notice] mpgw(GICMigrateSyncMPG): tid(57692656)[request][10.37.9.24] gtid(test1121222): path:
-/api/PublicApi/GetInsurancePackageFromProductCode?accessKey=0abbc84a-9805-4af9-8f34-7b039ea873f6&code=API_VP_HTNV
-Thu Apr 04 2024 15:22:22 [0x8580005c][gatewayscript-user][notice] mpgw(GICMigrateSyncMPG): tid(57692656)[request][10.37.9.24] gtid(test1121222): Final request to backend URL : http://bancasuat.gic.vn:8081/api/PublicApi/GetInsurancePackageFromProductCode?accessKey=0abbc84a-9805-4af9-8f34-7b039ea873f6&code=API_VP_HTNV
-With Header params:
-{"headers":{"Content-Length":"2","X-Global-Transaction-ID":"test1121222","Content-Type":"application/json;charset=utf-8","Host":"10.37.16.151:8194","SOAPAction":"\"\"","Via":"1.1 AwAAAKH+Txg-","X-Client-IP":"10.37.9.24"}}
-Thu Apr 04 2024 15:22:22 [0x80c0003f][all][notice] mpgw(GICMigrateSyncMPG): tid(57692656)[request][10.37.9.24] gtid(test1121222): e30=
-Thu Apr 04 2024 15:22:22 [0x00340027][multistep][warn] mpgw(GICMigrateSyncMPG): tid(57692656)[response][10.37.9.24] gtid(test1121222): Multistep Probe enabled
-Thu Apr 04 2024 15:22:22 [0x8580005c][gatewayscript-user][notice] mpgw(GICMigrateSyncMPG): tid(57692656)[response][10.37.9.24] gtid(test1121222): uri: http://10.37.16.151:8194/api/PublicApi/GetInsurancePackageFromProductCode?accessKey=0abbc84a-9805-4af9-8f34-7b039ea873f6&code=API_VP_HTNV | headers: {"headers":{"Content-Type":"application/json","Server":"Kestrel","Access-Control-Allow-Origin":"*","X-Powered-By":"ASP.NET","Date":"Thu, 04 Apr 2024 07:22:22 GMT","X-Global-Transaction-ID":"test1121222"},"statusCode":500,"reasonPhrase":"Internal Server Error"} | body: {
-  "statusCode": 500,
-  "message": "Object reference not set to an instance of an object."
+Thu Apr 04 2024 18: 53: 46 [
+    0x8580005c
+][gatewayscript-user
+][notice
+] mpgw(VBIMigrateSyncMPG): tid(58007888)[request
+][
+    10.37.9.26
+] gtid(1712228024752): Final request to backend URL : https: //apitest1.evbi.vn/api/p/input-order
+With Header params: {
+    "headers": {
+        "Content-Length": "472",
+        "X-Global-Transaction-ID": "1712228024752",
+        "Content-Type": "application/json",
+        "Authority": "vpbank.utv@gmail.com-GH8ECCE978035456097CC77D6140GKH00",
+        "beforeHashValue": "nsd=vpbank.utv@gmail.com&so_id_dtac=2487671111123&nv=UTV&ten=thao&dia_chi=hn&ngay_sinh=19620303&gioi_tinh=&cmt=123456784",
+        "hmacKey": "VPBANKCCE978035456097CC77D6140UTV",
+        "Host": "10.37.16.151:8195",
+        "SOAPAction": "\"\"",
+        "Accept-Encoding": "gzip,deflate",
+        "Via": "1.1 AgAAAEGV3Yo-",
+        "X-Client-IP": "10.37.9.26"
+    }
 }
+Thu Apr 04 2024 18: 53: 46 [
+    0x8580005c
+][gatewayscript-user
+][notice
+] mpgw(VBIMigrateSyncMPG): tid(58007888)[request
+][
+    10.37.9.26
+] gtid(1712228024752): and Body payload: {
+    "dtac_key": "VPBANKCCE978035456097CC77D6140UTV",
+    "nsd": "vpbank.utv@gmail.com",
+    "so_id_dtac": "2487671111123",
+    "nv": "UTV",
+    "ten": "thao",
+    "dchi": "hn",
+    "ngay_sinh": "19620303",
+    "cmt": "123456784",
+    "d_thoai": "0962876641",
+    "email": "thao99@gmail.com",
+    "mst": "122",
+    "trang_thai_tt": "C",
+    "gcns": [
+        {
+            "goi_bh": "UNG_THU_VU_CT1",
+            "ten": "thao",
+            "dchi": "hn",
+            "ngay_sinh": "19620303",
+            "gioi_tinh": "NU",
+            "cmt": "123456784",
+            "ngay_hl": "20200915",
+            "ngay_kt": "20210915",
+            "cau_hoi": "",
+            "tra_loi": "",
+            "moi_qh": "QH00000"
+        }
+    ],
+    "signature": "9403878f9d7e3a40c3e37b0b384042324e9a4494de44fd9ed356a28f59a9ad61"
+}
+Thu Apr 04 2024 18: 53: 46 [
+    0x80c0003f
+][all
+][notice
+] mpgw(VBIMigrateSyncMPG): tid(58007888)[request
+][
+    10.37.9.26
+] gtid(1712228024752): eyJkdGFjX2tleSI6IlZQQkFOS0NDRTk3ODAzNTQ1NjA5N0NDNzdENjE0MFVUViIsIm5zZCI6InZwYmFuay51dHZAZ21haWwuY29tIiwic29faWRfZHRhYyI6IjI0ODc2NzExMTExMjMiLCJudiI6IlVUViIsInRlbiI6InRoYW8iLCJkY2hpIjoiaG4iLCJuZ2F5X3NpbmgiOiIxOTYyMDMwMyIsImNtdCI6IjEyMzQ1Njc4NCIsImRfdGhvYWkiOiIwOTYyODc2NjQxIiwiZW1haWwiOiJ0aGFvOTlAZ21haWwuY29tIiwibXN0IjoiMTIyIiwidHJhbmdfdGhhaV90dCI6IkMiLCJnY25zIjpbeyJnb2lfYmgiOiJVTkdfVEhVX1ZVX0NUMSIsInRlbiI6InRoYW8iLCJkY2hpIjoiaG4iLCJuZ2F5X3NpbmgiOiIxOTYyMDMwMyIsImdpb2lfdGluaCI6Ik5VIiwiY210IjoiMTIzNDU2Nzg0IiwibmdheV9obCI6IjIwMjAwOTE1IiwibmdheV9rdCI6IjIwMjEwOTE1IiwiY2F1X2hvaSI6IiIsInRyYV9sb2kiOiIiLCJtb2lfcWgiOiJRSDAwMDAwIn1dLCJzaWduYXR1cmUiOiI5NDAzODc4ZjlkN2UzYTQwYzNlMzdiMGIzODQwNDIzMjRlOWE0NDk0ZGU0NGZkOWVkMzU2YTI4ZjU5YTlhZDYxIn0=
+Thu Apr 04 2024 18: 53: 46 [
+    0x00340027
+][multistep
+][warn
+] mpgw(VBIMigrateSyncMPG): tid(58007888)[response
+][
+    10.37.9.26
+] gtid(1712228024752): Multistep Probe enabled
+Thu Apr 04 2024 18: 53: 46 [
+    0x8580005c
+][gatewayscript-user
+][notice
+] mpgw(VBIMigrateSyncMPG): tid(58007888)[response
+][
+    10.37.9.26
+] gtid(1712228024752): uri: http: //10.37.16.151:8195/api/p/input-order | headers: {"headers":{"Server":"nginx/1.18.0 (Ubuntu)","Date":"Thu, 04 Apr 2024 10:53:46 GMT","Content-Type":"text/plain; charset=utf-8","Cache-Control":"no-cache","Pragma":"no-cache","Expires":"-1","X-AspNet-Version":"4.0.30319","X-Powered-By":"ASP.NET","Access-Control-Allow-Origin":"*","Access-Control-Allow-Headers":"Content-Type, Authorization, Authority , Accept, X-Requested-With","Access-Control-Allow-Methods":"GET, POST","X-Global-Transaction-ID":"1712228024752"},"statusCode":403,"reasonPhrase":"Forbidden"} | body: Authority Not valid!
