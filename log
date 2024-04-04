@@ -10,3 +10,15 @@ keytool -exportcert -keystore vpbPrivate.pfx -storetype PKCS12 -storepass haint8
 1. openssl.exe genpkey -algorithm RSA -out D:\\opensslKeyGen\private_key.pem
 2. openssl.exe rsa -in D:\\opensslKeyGen\private_key.pem -pubout -out D:\\opensslKeyGen\public_key.pem
 3. openssl.exe rsa -pubout -in D:\\opensslKeyGen\private_key.pem -outform DER -out D:\\opensslKeyGen\public_key.key
+
+http://bancasuat.gic.vn:8081/api/PublicApi/GetInsurancePackageFromProductCode?accessKey=0abbc84a-9805-4af9-8f34-7b039ea873f6&code=12331111
+
+
+Header
+
+{"headers":{"Content-Type":"application/json","Server":"Kestrel","Access-Control-Allow-Origin":"*","X-Powered-By":"ASP.NET","Date":"Thu, 04 Apr 2024 05:28:29 GMT","X-Global-Transaction-ID":"?"},"statusCode":500,"reasonPhrase":"Internal Server Error"}
+Body 
+{
+  "statusCode": 500,
+  "message": "Object reference not set to an instance of an object."
+}
