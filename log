@@ -1,137 +1,15 @@
-Thu Apr 04 2024 18: 53: 46 [
-    0x00340027
-][multistep
-][warn
-] mpgw(VBIMigrateSyncMPG): tid(58007888)[request
-][
-    10.37.9.26
-] gtid(1712228024752): Multistep Probe enabled
-Thu Apr 04 2024 18: 53: 46 [
-    0x8580005c
-][gatewayscript-user
-][notice
-] mpgw(VBIMigrateSyncMPG): tid(58007888)[request
-][
-    10.37.9.26
-] gtid(1712228024752): path:
-/api/p/input-order
-Thu Apr 04 2024 18: 53: 46 [
-    0x8580005c
-][gatewayscript-user
-][notice
-] mpgw(VBIMigrateSyncMPG): tid(58007888)[request
-][
-    10.37.9.26
-] gtid(1712228024752): original bank/contracts body request : {
-    "dtac_key": "VPBANKCCE978035456097CC77D6140UTV",
-    "nsd": "vpbank.utv@gmail.com",
-    "so_id_dtac": "2487671111123",
-    "nv": "UTV",
-    "ten": "thao",
-    "dchi": "hn",
-    "ngay_sinh": "19620303",
-    "cmt": "123456784",
-    "d_thoai": "0962876641",
-    "email": "thao99@gmail.com",
-    "mst": "122",
-    "trang_thai_tt": "C",
-    "gcns": [
-        {
-            "goi_bh": "UNG_THU_VU_CT1",
-            "ten": "thao",
-            "dchi": "hn",
-            "ngay_sinh": "19620303",
-            "gioi_tinh": "NU",
-            "cmt": "123456784",
-            "ngay_hl": "20200915",
-            "ngay_kt": "20210915",
-            "cau_hoi": "",
-            "tra_loi": "",
-            "moi_qh": "QH00000"
-        }
-    ]
-}
-Thu Apr 04 2024 18: 53: 46 [
-    0x8580005c
-][gatewayscript-user
-][notice
-] mpgw(VBIMigrateSyncMPG): tid(58007888)[request
-][
-    10.37.9.26
-] gtid(1712228024752): Final request to backend URL : https: //apitest1.evbi.vn/api/p/input-order
-With Header params: {
-    "headers": {
-        "Content-Length": "472",
-        "X-Global-Transaction-ID": "1712228024752",
-        "Content-Type": "application/json",
-        "Authority": "vpbank.utv@gmail.com-GH8ECCE978035456097CC77D6140GKH00",
-        "beforeHashValue": "nsd=vpbank.utv@gmail.com&so_id_dtac=2487671111123&nv=UTV&ten=thao&dia_chi=hn&ngay_sinh=19620303&gioi_tinh=&cmt=123456784",
-        "hmacKey": "VPBANKCCE978035456097CC77D6140UTV",
-        "Host": "10.37.16.151:8195",
-        "SOAPAction": "\"\"",
-        "Accept-Encoding": "gzip,deflate",
-        "Via": "1.1 AgAAAEGV3Yo-",
-        "X-Client-IP": "10.37.9.26"
-    }
-}
-Thu Apr 04 2024 18: 53: 46 [
-    0x8580005c
-][gatewayscript-user
-][notice
-] mpgw(VBIMigrateSyncMPG): tid(58007888)[request
-][
-    10.37.9.26
-] gtid(1712228024752): and Body payload: {
-    "dtac_key": "VPBANKCCE978035456097CC77D6140UTV",
-    "nsd": "vpbank.utv@gmail.com",
-    "so_id_dtac": "2487671111123",
-    "nv": "UTV",
-    "ten": "thao",
-    "dchi": "hn",
-    "ngay_sinh": "19620303",
-    "cmt": "123456784",
-    "d_thoai": "0962876641",
-    "email": "thao99@gmail.com",
-    "mst": "122",
-    "trang_thai_tt": "C",
-    "gcns": [
-        {
-            "goi_bh": "UNG_THU_VU_CT1",
-            "ten": "thao",
-            "dchi": "hn",
-            "ngay_sinh": "19620303",
-            "gioi_tinh": "NU",
-            "cmt": "123456784",
-            "ngay_hl": "20200915",
-            "ngay_kt": "20210915",
-            "cau_hoi": "",
-            "tra_loi": "",
-            "moi_qh": "QH00000"
-        }
-    ],
-    "signature": "9403878f9d7e3a40c3e37b0b384042324e9a4494de44fd9ed356a28f59a9ad61"
-}
-Thu Apr 04 2024 18: 53: 46 [
-    0x80c0003f
-][all
-][notice
-] mpgw(VBIMigrateSyncMPG): tid(58007888)[request
-][
-    10.37.9.26
-] gtid(1712228024752): eyJkdGFjX2tleSI6IlZQQkFOS0NDRTk3ODAzNTQ1NjA5N0NDNzdENjE0MFVUViIsIm5zZCI6InZwYmFuay51dHZAZ21haWwuY29tIiwic29faWRfZHRhYyI6IjI0ODc2NzExMTExMjMiLCJudiI6IlVUViIsInRlbiI6InRoYW8iLCJkY2hpIjoiaG4iLCJuZ2F5X3NpbmgiOiIxOTYyMDMwMyIsImNtdCI6IjEyMzQ1Njc4NCIsImRfdGhvYWkiOiIwOTYyODc2NjQxIiwiZW1haWwiOiJ0aGFvOTlAZ21haWwuY29tIiwibXN0IjoiMTIyIiwidHJhbmdfdGhhaV90dCI6IkMiLCJnY25zIjpbeyJnb2lfYmgiOiJVTkdfVEhVX1ZVX0NUMSIsInRlbiI6InRoYW8iLCJkY2hpIjoiaG4iLCJuZ2F5X3NpbmgiOiIxOTYyMDMwMyIsImdpb2lfdGluaCI6Ik5VIiwiY210IjoiMTIzNDU2Nzg0IiwibmdheV9obCI6IjIwMjAwOTE1IiwibmdheV9rdCI6IjIwMjEwOTE1IiwiY2F1X2hvaSI6IiIsInRyYV9sb2kiOiIiLCJtb2lfcWgiOiJRSDAwMDAwIn1dLCJzaWduYXR1cmUiOiI5NDAzODc4ZjlkN2UzYTQwYzNlMzdiMGIzODQwNDIzMjRlOWE0NDk0ZGU0NGZkOWVkMzU2YTI4ZjU5YTlhZDYxIn0=
-Thu Apr 04 2024 18: 53: 46 [
-    0x00340027
-][multistep
-][warn
-] mpgw(VBIMigrateSyncMPG): tid(58007888)[response
-][
-    10.37.9.26
-] gtid(1712228024752): Multistep Probe enabled
-Thu Apr 04 2024 18: 53: 46 [
-    0x8580005c
-][gatewayscript-user
-][notice
-] mpgw(VBIMigrateSyncMPG): tid(58007888)[response
-][
-    10.37.9.26
-] gtid(1712228024752): uri: http: //10.37.16.151:8195/api/p/input-order | headers: {"headers":{"Server":"nginx/1.18.0 (Ubuntu)","Date":"Thu, 04 Apr 2024 10:53:46 GMT","Content-Type":"text/plain; charset=utf-8","Cache-Control":"no-cache","Pragma":"no-cache","Expires":"-1","X-AspNet-Version":"4.0.30319","X-Powered-By":"ASP.NET","Access-Control-Allow-Origin":"*","Access-Control-Allow-Headers":"Content-Type, Authorization, Authority , Accept, X-Requested-With","Access-Control-Allow-Methods":"GET, POST","X-Global-Transaction-ID":"1712228024752"},"statusCode":403,"reasonPhrase":"Forbidden"} | body: Authority Not valid!
+Thu Mar 21 2024 12:43:53 [0x8580005c][gatewayscript-user][notice] mpgw(ASCSyncMPG): tid(17736562)[request][10.37.16.126] gtid(f6e74d4965fbbb09010ea372): original request :
+{"ConfirmPayInfo":{"DebtObject":{"CodeId":"424_1033_20305_19588","CustType":"2","CustCode":"7500019588","CustomerName":"Vuong Tue Man","Address":"To 7","TotalAmount":"140000","DebtDetails":[{"CodeId":"53449","Code":"53449","TypeOfDebt":"2","Amount":"140000","Desc":"Phu phi"}]},"TransactionNo":"VPM368523915462459/FT24033318570502","TmnCode":"33627438d458453da8b8759f500cc86b","CreateDate":"20240321114354","Authenticate":{"PartnerCode":"VPBANK","UnitCode":"SGDTEST999900001","Version":"2.0.1"}}}
+Thu Mar 21 2024 12:43:53 [0x8580005c][gatewayscript-user][notice] mpgw(ASCSyncMPG): tid(17736562)[request][10.37.16.126] gtid(f6e74d4965fbbb09010ea372): path:
+/api/ApiAscPay/NotifyPayment
+Thu Mar 21 2024 12:43:53 [0x8580005c][gatewayscript-user][notice] mpgw(ASCSyncMPG): tid(17736562)[request][10.37.16.126] gtid(f6e74d4965fbbb09010ea372): SigningData :
+33627438d458453da8b8759f500cc86bVPBANKSGDTEST9999000017500019588VPM368523915462459/FT24033318570502424_1033_20305_1958820240321114354
+Thu Mar 21 2024 12:43:53 [0x8580005c][gatewayscript-user][notice] mpgw(ASCSyncMPG): tid(17736562)[request][10.37.16.126] gtid(f6e74d4965fbbb09010ea372): Hash value :
+a2a4f655fc1baa2f638355dc832b8e2d47da5141bde72af9bd8c8f755556db32
+Thu Mar 21 2024 12:43:53 [0x8580005c][gatewayscript-user][notice] mpgw(ASCSyncMPG): tid(17736562)[request][10.37.16.126] gtid(f6e74d4965fbbb09010ea372): FINAL request :
+{"ConfirmPayInfo":{"DebtObject":{"CodeId":"424_1033_20305_19588","CustType":"2","CustCode":"7500019588","CustomerName":"Vuong Tue Man","Address":"To 7","TotalAmount":"140000","DebtDetails":[{"CodeId":"53449","Code":"53449","TypeOfDebt":"2","Amount":"140000","Desc":"Phu phi"}]},"TransactionNo":"VPM368523915462459/FT24033318570502","TmnCode":"33627438d458453da8b8759f500cc86b","CreateDate":"20240321114354","Authenticate":{"PartnerCode":"VPBANK","UnitCode":"SGDTEST999900001","Version":"2.0.1"}},"HashCode":"a2a4f655fc1baa2f638355dc832b8e2d47da5141bde72af9bd8c8f755556db32"}
+Thu Mar 21 2024 12:43:53 [0x00340027][multistep][warn] mpgw(ASCSyncMPG): tid(17736562)[response][10.37.16.126] gtid(f6e74d4965fbbb09010ea372): Multistep Probe enabled
+Thu Mar 21 2024 12:43:53 [0x80c0003f][all][notice] mpgw(ASCSyncMPG): tid(17736562)[response][10.37.16.126] gtid(f6e74d4965fbbb09010ea372): 
+Thu Mar 21 2024 12:43:53 [0x8580005c][gatewayscript-user][notice] mpgw(ASCSyncMPG): tid(17736562)[response][10.37.16.126] gtid(f6e74d4965fbbb09010ea372): uri: http://10.37.16.151:8144/api/ApiAscPay/NotifyPayment | headers: {"headers":{"cache-control":"no-cache","pragma":"no-cache","expires":"-1","server":"Microsoft-IIS/10.0","x-aspnet-version":"4.0.30319","x-powered-by":"ASP.NET","date":"Thu, 21 Mar 2024 04:46:08 GMT","X-Global-Transaction-ID":"f6e74d4965fbbb09010ea372"},"statusCode":504,"reasonPhrase":"Gateway Timeout"} | body: 
+Thu Mar 21 2024 12:45:08 [0x00340027][multistep][warn] mpgw(ASCSyncMPG): tid(17737298)[request][10.37.16.126] gtid(f6e74d4965fbbb54010ea652): Multistep Probe enabled
+Thu Mar 21 2024 12:45:08 [0x80c0003f][all][notice] mpgw(ASCSyncMPG): tid(17737298)[request][10.37.16.126] gtid(f6e74d4965fbbb54010ea652): eyJDb25maXJtUGF5SW5mbyI6eyJEZWJ0T2JqZWN0Ijp7IkNvZGVJZCI6IjQyMV8xMDMzXzIwMjE5XzE5NTAyIiwiQ3VzdFR5cGUiOiIyIiwiQ3VzdENvZGUiOiI3NTAwMDE5NTAyIiwiQ3VzdG9tZXJOYW1lIjoixJDhu5cgSMOgIFRoYW5oIFRyw7pjIiwiQWRkcmVzcyI6IlThu5UgOCwg4bqlcCBSdeG7mW5nIFRyZSwgQuG6o28gUXVhbmcsIHRwLkxvbmcgS2jDoW5oLCDEkE4iLCJUb3RhbEFtb3VudCI6IjUwMDAwIiwiRGVidERldGFpbHMiOlt7IkNvZGVJZCI6IjUzMiIsIkNvZGUiOiI1MzIiLCJUeXBlT2ZEZWJ0IjoiNSIsIkFtb3VudCI6IjUwMDAwIiwiRGVzYyI6IljDoyBo4buZaSBow7NhIn1dfSwiVHJhbnNhY3Rpb25ObyI6IkZUMjQwMzM5NjkzMDY3NTkiLCJUbW5Db2RlIjoiMzM2Mjc0MzhkNDU4NDUzZGE4Yjg3NTlmNTAwY2M4NmIiLCJDcmVhdGVEYXRlIjoiMjAyNDAzMjExMTQ1MTIiLCJBdXRoZW50aWNhdGUiOnsiUGFydG5lckNvZGUiOiJWUEJBTksiLCJVbml0Q29kZSI6IlNHRFRFU1Q5OTk5MDAwMDEiLCJWZXJzaW9uIjoiMi4wLjEifX19
