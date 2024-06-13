@@ -1,0 +1,57 @@
+OutputRoot
+	Properties
+			MessageSet:CHARACTER:
+			MessageType:CHARACTER:
+			MessageFormat:CHARACTER:
+			Encoding:INTEGER:546
+			CodedCharSetId:INTEGER:1208
+			Transactional:BOOLEAN:true
+			Persistence:BOOLEAN:false
+			CreationTime:TIMESTAMP:java.util.GregorianCalendar[time=1718032774510,areFieldsSet=true,areAllFieldsSet=false,lenient=true,zone=sun.util.calendar.ZoneInfo[id="Asia/Bangkok",offset=25200000,dstSavings=0,useDaylight=false,transitions=3,lastRule=null],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=?,YEAR=2024,MONTH=5,WEEK_OF_YEAR=?,WEEK_OF_MONTH=?,DAY_OF_MONTH=10,DAY_OF_YEAR=?,DAY_OF_WEEK=?,DAY_OF_WEEK_IN_MONTH=?,AM_PM=1,HOUR=10,HOUR_OF_DAY=22,MINUTE=19,SECOND=34,MILLISECOND=510,ZONE_OFFSET=?,DST_OFFSET=?]
+			ExpirationTime:INTEGER:-1
+			Priority:INTEGER:0
+			ReplyIdentifier:BLOB:[B@a7517580
+			ReplyProtocol:CHARACTER:MQ
+			Topic:UNKNOWN:null
+			ContentType:CHARACTER:
+			IdentitySourceType:CHARACTER:
+			IdentitySourceToken:CHARACTER:
+			IdentitySourcePassword:CHARACTER:
+			IdentitySourceIssuedBy:CHARACTER:
+			IdentityMappedType:CHARACTER:
+			IdentityMappedToken:CHARACTER:
+			IdentityMappedPassword:CHARACTER:
+			IdentityMappedIssuedBy:CHARACTER:
+	HTTPRequestHeader
+			X-Global-Transaction-ID:CHARACTER:FT241600353673331718057988179
+			X-OP-Date:CHARACTER:20240610T222111Z
+			Accept:CHARACTER:application/json
+			X-OP-Expires:CHARACTER:300
+			X-OP-Authorization:CHARACTER:OWS1-HMAC-SHA256 Credential=VPB/20240610/onepay/paycollect/ows1_request,SignedHeaders=x-op-date;x-op-expires,Signature=60de313009d72ed9bbe7eab9add81b56e07c583c62a49c7979653bfd8df654d5
+			Content-Type:CHARACTER:application/json
+			Host:CHARACTER: 
+	JSON
+			Data
+					request_id:CHARACTER:20240610221948897
+					request_time:CHARACTER:2024-06-11 05:19:48
+					receiver_bank_id:CHARACTER:VPBKVNVX
+					receiver_master_number:CHARACTER:231749969
+					receiver_account_number:CHARACTER:06633600995
+					receiver_holder_name:CHARACTER:CONG TY CP FUNDIIN
+					amount:CHARACTER:208000
+					currency:CHARACTER:VND
+					create_time:CHARACTER:20240608
+					funds_transfer_id:CHARACTER:FT24160035367333
+					remark:CHARACTER:NHAN TU 1819088888 TRACE 105203 ND TSC20381321 FT24160460441290
+					trans_time:CHARACTER:2024-06-08 16:21:26
+					
+					
+
+DECLARE REGION EXTERNAL CHARACTER 'onepay';
+DECLARE APPID EXTERNAL CHARACTER 'VPB';
+DECLARE APPKEY EXTERNAL CHARACTER 'A57525892B2E40A8845E201BF0114BBF';
+
+DECLARE URIHTTP EXTERNAL CHARACTER '/paycollect/api/v1/banks/VPBKVNVX/funds_transfers/';
+DECLARE URISIGN EXTERNAL CHARACTER '/paycollect/api/v1/banks/VPBKVNVX/funds_transfers/';
+
+{"request_id":"2024061022271527","request_time":"2024-06-11 05:27:15","receiver_bank_id":"VPBKVNVX","receiver_master_number":"231749969","receiver_account_number":"06633600995","receiver_holder_name":"CONG TY CP FUNDIIN","amount":"208000","currency":"VND","create_time":"20240608","funds_transfer_id":"FT24160035367333","remark":"NHAN TU 1819088888 TRACE 105203 ND TSC20381321 FT24160460441290","trans_time":"2024-06-08 16:21:26"}
