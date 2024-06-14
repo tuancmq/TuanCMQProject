@@ -17,6 +17,7 @@ if (path.includes('/paycollect/api/v1/banks/VPBKVNVX/funds_transfers/')) {
     var httpmethod = sm.getVar('var://service/protocol-method');
 
     var currentDateWithFormat = new Date().toISOString().slice(0,10).replace(/-/g,"");
+    currentDateWithFormat  = '20240613';
     console.notice('currentDateWithFormat: '+  currentDateWithFormat);
     var currentDateTimeWithFormat = new Date().toISOString().replace(/[-:.]/g, "").replace("T", "").replace("Z", "Z");
     console.notice('currentDateTimeWithFormat: '+  currentDateTimeWithFormat);
@@ -55,7 +56,7 @@ if (path.includes('/paycollect/api/v1/banks/VPBKVNVX/funds_transfers/')) {
     secretKeyStep1.write('OWS1' + secretAccessKey);
     console.notice('FirstKey: '+  'OWS1' + secretAccessKey);
     var hmacKeyTime = crypto.createHmac('hmac-sha256', secretKeyStep1);
-    var dateKey = hmacKeyTime.update(currentDateTimeWithFormat).digest("hex").toLowerCase();
+    var dateKey = hmacKeyTime.update(currentDateWithFormat).digest("hex").toLowerCase();
     console.notice('dateKey: '+  dateKey);
 
     const secretKeyStep2 = Buffer.from(dateKey, 'hex');
