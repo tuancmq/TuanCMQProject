@@ -1,0 +1,25 @@
+curl --location 'http://10.37.16.151:5555/qrcodeApi/rest/v1/qrcode' \
+--header 'Content-Type: application/json' \
+--data '{
+    "bankCode": "970466",
+    "payType": "04",
+    "item": [
+        {
+            "quantity": "1",
+            "note": "",
+            "qrInfor": "00020101021226310010A00000077501130318360854AAA5204451353037045405990005802VN5908FOODTECH6005HANOI62750313TOGO APP TEST051901240625154531230670708TOGO00010819thanh toan don hang6304EC91"
+        }
+    ],
+    "orderCode": "17543848351917056",
+    "voucherCode": "",
+    "mobile": "0917050450",
+    "debitAmount": "99000",
+    "msgType": "VERIFICATION",
+    "appName": "",
+    "addValue": "00020101021226310010A00000077501130318360854AAA5204451353037045405990005802VN5908FOODTECH6005HANOI62750313TOGO APP TEST051901240625154531230670708TOGO00010819thanh toan don hang6304EC91",
+    "signature": "MpGHmAcSUQdM6wyfcQhN0cMtm0n+D7jUIHDNB927l+U0GivtAy5iSSD6u7w4dq/Pgazc3l3hqya3QM0QPQvaVRh4jW4EJx8wNuTQGa5EvVWoraGLqGQd7QCCNoQ9JLLZ3zHTnrSagOEXcIlUpYyZ60Fhk4CgGIouW17NextMnCQhiIvKJtVv9eBN4MvPnfZ9YXNADLLtnMahZTZ38KJNTiCtMHFdLIXhIGWbKjHE+p/pR5ZPfxyTsrkf5WrwdXYJjlVZJBxK1s4siGm2EOY10O9LTTzA3hI2JnkeC679yITZNSMTGm7yNCqQidw0UjxHK4AiA1ArOnOh9D9WeBLEiw=="
+}'
+
+
+
+https://doitac-tran.vnpaytest.vn/qrcodeApi/rest/v1/qrcode
