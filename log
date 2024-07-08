@@ -1,20 +1,22 @@
-Mon Jul 08 2024 18: 51: 43 [
+Mon Jul 08 2024 19: 03: 29 [
     0x8580005c
 ][gatewayscript-user
 ][notice
-] mpgw(VNPaySyncMPG): tid(128559686)[request
+] mpgw(VNPaySyncMPG): tid(136381046)[request
 ][
-    10.37.9.20
-] gtid(f6e74d49668bc4bf07a9aa46): final request : {
+    10.37.9.21
+] gtid(f6e74d49668bc78108210276): final request : {
     "bankCode": "970466",
     "payType": "01",
-    "item": {
-        "quantity": "1",
-        "note": "TT Tien dien test123",
-        "qrInfor": "0002010102112623000690840501091123438455204472253037045405150005802VN5915NguyetTran Shop6008DONGTHAP610600541162630316Nguyet Tran CS 40516020000000000SP10070400040804sp100903AME63049252"
-    },
+    "item": [
+        {
+            "quantity": "1",
+            "note": "TT Tien dien test123",
+            "qrInfor": "0002010102112623000690840501091123438455204472253037045405150005802VN5915NguyetTran Shop6008DONGTHAP610600541162630316Nguyet Tran CS 40516020000000000SP10070400040804sp100903AME63049252"
+        }
+    ],
     "orderCode": "BK623C21AFBAEEA164810795176611",
-    "traceTransfer": "VPM402265066979866",
+    "traceTransfer": "VPM754650074514739",
     "promotionCode": "BK623C23",
     "mobile": "0987654321",
     "debitAmount": "98000",
@@ -27,31 +29,25 @@ Mon Jul 08 2024 18: 51: 43 [
     "payDate": "2024-03-19T14:25:19",
     "addtionalData": "addtionalData2455543",
     "appName": "appName111",
-    "addValueRaw": {
-        "payMethod": "01",
-        "typeSource": "01",
-        "bankCard": "03",
-        "primaryMobile": "0972939964"
-    },
     "addValue": "{\"payMethod\":\"01\",\"typeSource\":\"01\",\"bankCard\":\"03\",\"primaryMobile\":\"0972939964\"}",
-    "signature": "saWwyTOZAbl5xTGFgSRloRntM6KuxC9H1vG7g1UNSC9AexxTqAi2DHtYoVmSi81IQXe62y3PK6XJNEHhQSBLc2llxLxAcUV46fTDZ5AYO0+JkmXlPKtnyNMvThLXnYYeERNwF0rNROLLKZSFLO8vEB/On0B4p7HrRmBjNaHXaoyugFJLZnqDcdGa9U9ysbDKds3/5pj6IyhIXvpIx7q96e4Ej4s/qhgzImPgKjUK50KB/Phn0Aov1siqRzlrK7XWBhLMj+fr86z3P7TIrixJVxVdGKzvtedgJkENVXyv5jPE7rytZCxFPMqRWBNCrTbNhPJlEKSttgyAiSeuWXKoKQ=="
+    "signature": "W0MvH5TLhLdUj5aEytmzjtWB7cQS1iuAdYJxiPn3ch8Mvi009UsTV+fsZEez0BcLJSqQiEOTSOO3vO7u+XYNstN9yWE8KSBPv4kQEDwPyJihuHUIZwVk08um51U2rvyYFPdSfkX8DMAdfXKFuR52PhNViWnrxpAr9tOMmyKpgG7NJnPC1SOGN5fXA/x1ZhEfaaLbvnaOiuq/rvWynGoRdTnys4vGGW4kL/V6VJ7O6u12i4oI3pR7+Zde9ssEEUeQGmI6wr4CuSTg7It7IDcbIenefwOBs66QwFLsRac6bUDBNxE9G/VhvNve9Vwu6uVuD/zW8SsX+NR+BNnZ4JQw0A=="
 }
-Mon Jul 08 2024 18: 51: 43 [
+Mon Jul 08 2024 19: 03: 29 [
     0x00340027
 ][multistep
 ][warn
-] mpgw(VNPaySyncMPG): tid(128559686)[response
+] mpgw(VNPaySyncMPG): tid(136381046)[response
 ][
-    10.37.9.20
-] gtid(f6e74d49668bc4bf07a9aa46): Multistep Probe enabled
-Mon Jul 08 2024 18: 51: 43 [
+    10.37.9.21
+] gtid(f6e74d49668bc78108210276): Multistep Probe enabled
+Mon Jul 08 2024 19: 03: 29 [
     0x8580005c
 ][gatewayscript-user
 ][notice
-] mpgw(VNPaySyncMPG): tid(128559686)[response
+] mpgw(VNPaySyncMPG): tid(136381046)[response
 ][
-    10.37.9.20
-] gtid(f6e74d49668bc4bf07a9aa46): body: {
-    "resCode": "08",
-    "resDesc": "Giao dich nghi van"
+    10.37.9.21
+] gtid(f6e74d49668bc78108210276): body: {
+    "resCode": "06",
+    "resDesc": "Pay date is not in format"
 }
