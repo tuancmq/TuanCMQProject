@@ -1,15 +1,35 @@
-Mon Apr 15 2024 19:31:27 [0x00340027][multistep][warn] mpgw(ASCSyncMPG): tid(1520088226)[request][10.16.12.113] gtid(a0b4f789661d1e1f5a9ab4a2): Multistep Probe enabled
-Mon Apr 15 2024 19:31:27 [0x80c0003f][all][notice] mpgw(ASCSyncMPG): tid(1520088226)[request][10.16.12.113] gtid(a0b4f789661d1e1f5a9ab4a2): eyJIYXNoQ29kZSI6IjFmNDcwMTMzMWZlYjNlOTczMzJjNmQzMTgyOGZiNWYzYzFiOGE5NzY2ODM5ZDJhY2Q0ZDI3ZWY2ZTc1YjhmMmIiLCJHZXREZWJ0SW5mbyI6eyJUbW5Db2RlIjoiYWQ1Y2EyN2ZhZjI2OTVjMmNkMDQzNWJiOWZlNjFhOWYiLCJDdXN0Q29kZSI6IjA4MDMwNjAxMTg0NiIsIkNyZWF0ZURhdGUiOiIyMDI0MDQxNTE5MzEyOCIsIkNoYW5uZWwiOiIyIiwiQXV0aGVudGljYXRlIjp7IlBhcnRuZXJDb2RlIjoiVlBCQU5LIiwiVW5pdENvZGUiOiJTR0RMQTAwMDAxIiwiVmVyc2lvbiI6IjIuMC4yIn19fQ==
-Mon Apr 15 2024 19:31:27 [0x8580005c][gatewayscript-user][notice] mpgw(ASCSyncMPG): tid(1520088226)[request][10.16.12.113] gtid(a0b4f789661d1e1f5a9ab4a2): original request :
-{"HashCode":"1f4701331feb3e97332c6d31828fb5f3c1b8a9766839d2acd4d27ef6e75b8f2b","GetDebtInfo":{"TmnCode":"ad5ca27faf2695c2cd0435bb9fe61a9f","CustCode":"080306011846","CreateDate":"20240415193128","Channel":"2","Authenticate":{"PartnerCode":"VPBANK","UnitCode":"SGDLA00001","Version":"2.0.2"}}}
-Mon Apr 15 2024 19:31:27 [0x8580005c][gatewayscript-user][notice] mpgw(ASCSyncMPG): tid(1520088226)[request][10.16.12.113] gtid(a0b4f789661d1e1f5a9ab4a2): path:
-/api/ApiAscPay/GetDebt
-Mon Apr 15 2024 19:31:27 [0x8580005c][gatewayscript-user][notice] mpgw(ASCSyncMPG): tid(1520088226)[request][10.16.12.113] gtid(a0b4f789661d1e1f5a9ab4a2): SigningData :
-ad5ca27faf2695c2cd0435bb9fe61a9fVPBANKSGDLA0000108030601184620240415193128VPBANKSGDLA000012.0.2
-Mon Apr 15 2024 19:31:27 [0x8580005c][gatewayscript-user][notice] mpgw(ASCSyncMPG): tid(1520088226)[request][10.16.12.113] gtid(a0b4f789661d1e1f5a9ab4a2): Hash value :
-653b1f17c5d41f4566bb6c3f73d313172fd0db7595357f96f4d4c3a726c60123
-Mon Apr 15 2024 19:31:27 [0x8580005c][gatewayscript-user][notice] mpgw(ASCSyncMPG): tid(1520088226)[request][10.16.12.113] gtid(a0b4f789661d1e1f5a9ab4a2): FINAL request :
-{"HashCode":"653b1f17c5d41f4566bb6c3f73d313172fd0db7595357f96f4d4c3a726c60123","GetDebtInfo":{"TmnCode":"ad5ca27faf2695c2cd0435bb9fe61a9f","CustCode":"080306011846","CreateDate":"20240415193128","Channel":"2","Authenticate":{"PartnerCode":"VPBANK","UnitCode":"SGDLA00001","Version":"2.0.2"}}}
-Mon Apr 15 2024 19:31:28 [0x00340027][multistep][warn] mpgw(ASCSyncMPG): tid(1520088226)[response][10.16.12.113] gtid(a0b4f789661d1e1f5a9ab4a2): Multistep Probe enabled
-Mon Apr 15 2024 19:31:28 [0x80c0003f][all][notice] mpgw(ASCSyncMPG): tid(1520088226)[response][10.16.12.113] gtid(a0b4f789661d1e1f5a9ab4a2): eyJPYmplY3RJbmZvIjp7IlJlcXVlc3RUaW1lIjoiMjAyNDA0MTUxOTMxMjgiLCJMb2FpUGhpIjowLCJJREtob2FDaGluaCI6bnVsbCwiTWFEb2lUdW9uZyI6bnVsbCwiSG9WYVRlbiI6bnVsbCwiR2lvaVRpbmgiOm51bGwsIk5nYXlTaW5oIjpudWxsLCJLaG9hIjpudWxsLCJNYUxvcCI6bnVsbCwiVGVuTG9wIjpudWxsLCJNYU5nYW5oIjpudWxsLCJUZW5OZ2FuaCI6bnVsbCwiVGVuS2hvYUhvYyI6bnVsbCwiTmFtTmhhcEhvYyI6bnVsbCwiUXVlUXVhbiI6bnVsbCwiRGlhQ2hpIjpudWxsLCJUb3RhbEFtb3VudCI6MCwiRmVlIjowfSwiRGVidERldGFpbHMiOltdLCJNZXNzYWdlIjoiS2jDtG5nIHTDrG0gdGjhuqV5IHRow7RuZyB0aW4gxJHhu5FpIHTGsOG7o25nIiwiRXJyb3JDb2RlIjoiNDYiLCJIYXNoQ29kZSI6IjgzMjIyMjllODIzZTg2NGY5OGUyNzYzNGRmYjY3NjhjMDczMThjNzE0ODc5OWUyZDM3ODQxYzI1N2M4NjEzMTEifQ==
-Mon Apr 15 2024 19:31:28 [0x8580005c][gatewayscript-user][notice] mpgw(ASCSyncMPG): tid(1520088226)[response][10.16.12.113] gtid(a0b4f789661d1e1f5a9ab4a2): uri: http://10.23.54.55:8144/api/ApiAscPay/GetDebt | headers: {"headers":{"cache-control":"no-cache","pragma":"no-cache","content-type":"application/json; charset=utf-8","expires":"-1","server":"Microsoft-IIS/10.0","x-aspnet-version":"4.0.30319","x-powered-by":"ASP.NET","date":"Mon, 15 Apr 2024 12:31:53 GMT","X-Global-Transaction-ID":"a0b4f789661d1e1f5a9ab4a2"},"statusCode":200,"reasonPhrase":"OK"} | body: {"ObjectInfo":{"RequestTime":"20240415193128","LoaiPhi":0,"IDKhoaChinh":null,"MaDoiTuong":null,"HoVaTen":null,"GioiTinh":null,"NgaySinh":null,"Khoa":null,"MaLop":null,"TenLop":null,"MaNganh":null,"TenNganh":null,"TenKhoaHoc":null,"NamNhapHoc":null,"QueQuan":null,"DiaChi":null,"TotalAmount":0,"Fee":0},"DebtDetails":[],"Message":"Không tìm thấy thông tin đối tượng","ErrorCode":"46","HashCode":"8322229e823e864f98e27634dfb6768c07318c7148799e2d37841c257c861311"}
+{
+    "bankCode": "970466",
+    "payType": "01",
+    "item": {
+        "quantity": "1",
+        "note": "TT Tien dien",
+        "qrInfor": "0002010102112623000690840501091123438455204472253037045405150005802VN5915NguyetTran Shop6008DONGTHAP610600541162630316Nguyet Tran CS 40516020000000000SP10070400040804sp100903AME63049252"
+    },
+    "orderCode": "BK623C21AFBAEEA164810795176611",
+    "traceTransfer": "VPM965250345552653",
+    "mobile": "0987654321",
+    "debitAmount": "98000",
+    "realAmount": "95000",
+    "accountNo": "4786689925774780",
+    "userName": "NGUYEN THI HIEN ANH",
+    "respCode": "00",
+    "respDesc": "Success",
+    "msgType": "NOTIFICATION",
+    "payDate": "2024-03-19T14:25:19",
+    "addtionalData": "addtionalData2455543",
+    "appName": "appName111",
+    "addValue": {
+        "payMethod": "01",
+        "typeSource": "01",
+        "bankCard": "03",
+        "primaryMobile": "0972939964"
+    },
+    "signature": "cUp4A5UNWFjfx3WRcki8bNVG+4vaOd5asatpgWOAxi63Ju+fiDaRl3cqRLYihsiyxgaUT/rnszS2u0V1VBgflUMfNDu8sTKK28XLLOaA/Ue8ln74nRs14GS6FC9Sw/cJo8z3oSFzDVspwGGUVhRRPIiQgxBbRaugaUNgiOuYCLsEEvNzjQgbdBOk0jl0c1hFL7OrXmAi+DjXzMHXYZBvWj8586A7e8v3QGYjJLEculudiVe86TvR4JOIVcGj9kiMg53cIrPT7F0Yt4cegyBavLCEPzXkICP86aqfenvW/+CGrJLClUOI3IP+e293PXk0QQgfyoSxicqewLSotW/XBQ=="
+}
+
+
+{
+    "resCode": "08",
+    "resDesc": "Giao dich nghi van"
+}
