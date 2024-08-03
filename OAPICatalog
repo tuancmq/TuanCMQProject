@@ -1,0 +1,271 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+
+namespace TuanCMQDotNet.ThongKe
+{
+    internal class OAPICatalog
+    {
+
+        public void CreateOAPICatalog()
+        {
+            List<CatalogObject> listFinal = GetOAPICatalog();
+
+            List<string> finalText = new List<string>();
+            foreach (var item in listFinal)
+            {
+                foreach (var method in item.MethodList)
+                {
+                    foreach (var function in method.FunctionList)
+                    {
+                        foreach (var operation in function.OperationObjects)
+                        {
+                            finalText.Add(item.AppName
+                                   + ","
+                                   + item.BaseURI
+                                   + ","
+                                   + method.MethodName
+                                    + ","
+                                   + function.FunctionURI
+                                   + ","
+                                   + function.FullURI
+                                   + ","
+                                   + function.FunctionName
+                                   + ","
+                                   + operation.GboFunctionName
+                                   + ","
+                                   + operation.BackendPrefix
+                                   );
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            
+
+
+
+            //System.IO.File.WriteAllLines(@"D:\Vpbank\ConvertAdpToJMSOutput\TongHop.txt", finalText.ToArray());
+            using (var file = File.CreateText(@"D:\xxx\OAPI_CATALOG.csv"))
+            {
+                foreach (var arr in finalText)
+                {
+                    file.WriteLine(string.Join(",", arr));
+                }
+            }
+            int i = 0;
+        }
+
+
+        public List<CatalogObject> GetOAPICatalog()
+        {
+            string iapiRepoPath = @"D:\2024\TuanCMQDotNet\TuanCMQDotNet\TuanCMQDotNet\ThongKe\listOAPI.txt";
+
+
+            //Khai bao cac object de store
+
+            List<CatalogObject> iapiCatalogObjectList = new List<CatalogObject>();
+
+
+            //Lay ra danh sach cac repo
+            string[] listIAPIRepos = File.ReadAllLines(iapiRepoPath);
+
+            //
+            foreach (string repo in listIAPIRepos)
+            {
+
+                CatalogObject iapiCatalogObject = new CatalogObject();
+                //Lấy ra những file APIRe (HTTPInput trong từng folder)
+                string[] files = Directory.GetFiles(repo, "*Rq.msgflow", SearchOption.AllDirectories);
+
+                if (files.Length <= 0)
+                {
+                    continue;
+                }
+
+                //Mỗi project chỉ có 1 file duy nhất *Rq.msgflow
+                XDocument doc = XDocument.Load(files[0]);
+
+                var urlSpecifiers = doc.Descendants("nodes")
+                                       .Attributes("URLSpecifier")
+                                       .Select(attr => attr.Value);
+
+
+                iapiCatalogObject.AppName =  Path.GetFileName(repo.TrimEnd('\\'));
+                iapiCatalogObject.BaseURI = (urlSpecifiers.First());
+                iapiCatalogObject.BaseURI = iapiCatalogObject.BaseURI.Replace("*", "");
+                if (iapiCatalogObject.BaseURI.EndsWith("/"))
+                {
+                    iapiCatalogObject.BaseURI = iapiCatalogObject.BaseURI.Remove(iapiCatalogObject.BaseURI.Length - 1);
+                }
+
+                //Done Primiary object
+
+
+                string[] routeFiles = Directory.GetFiles(repo, "*Rou*.esql", SearchOption.AllDirectories);
+                routeFiles.Concat(Directory.GetFiles(repo, "GET.esql", SearchOption.AllDirectories));
+                routeFiles.Concat(Directory.GetFiles(repo, "POST.esql", SearchOption.AllDirectories));
+                routeFiles.Concat(Directory.GetFiles(repo, "PUT.esql", SearchOption.AllDirectories));
+                routeFiles.Concat(Directory.GetFiles(repo, "PATCH.esql", SearchOption.AllDirectories));
+                routeFiles.Concat(Directory.GetFiles(repo, "DELETE.esql", SearchOption.AllDirectories));
+
+                List<MethodObject> listMethodObject = new List<MethodObject>(); 
+
+                foreach (var routeFile in routeFiles)
+                {
+                    MethodObject methodObject = new MethodObject();
+
+                    methodObject.MethodName = Path.GetFileName(routeFile.TrimEnd('\\')).ToUpper().Replace("ROUTE","").Replace("ROUTING", "").Replace("_", "").Replace(".ESQL", "");
+                    if (methodObject.MethodName.Contains("POST"))
+                    {
+                        methodObject.MethodName = "POST";
+                    }
+                    if (methodObject.MethodName.Contains("GET"))
+                    {
+                        methodObject.MethodName = "GET";
+                    }
+                    if (methodObject.MethodName.Contains("PUT"))
+                    {
+                        methodObject.MethodName = "PUT";
+                    }
+                    if (methodObject.MethodName.Contains("DELETE"))
+                    {
+                        methodObject.MethodName = "DELETE";
+                    }
+                    if (methodObject.MethodName.Contains("PATCH"))
+                    {
+                        methodObject.MethodName = "PATCH";
+                    }
+                    string esqlContent = File.ReadAllText(routeFile);
+
+
+                    //Cho những label thuộc WHEN CASE
+                    var whenThenMatches = Regex.Matches(esqlContent, @"WHEN\s+'([^']+)'\s+THEN\s+(.*?)(?=WHEN|END CASE;)", RegexOptions.Singleline | RegexOptions.IgnoreCase);
+
+
+                    List<FunctionObject> listFunctionObjectPerMethod = new List<FunctionObject>();
+                    foreach (Match match in whenThenMatches)
+                    {
+
+                        
+                        if (match.Groups.Count == 3)
+                        {
+                            string whenValue = match.Groups[1].Value;
+                            string thenBlock = match.Groups[2].Value;
+                            // Biểu thức chính quy để tìm các giá trị labelName trong khối THEN
+                            var labelNameMatches = Regex.Matches(thenBlock, @"labelName\s*=\s*'([^']+)'", RegexOptions.IgnoreCase);
+                            var trgLabelMatches =  Regex.Matches(thenBlock, @"trgLabel\s*=\s*'([^']+)'", RegexOptions.IgnoreCase);
+                            List<Match> allMatches = new List<Match>();
+                            allMatches.AddRange(labelNameMatches);
+                            allMatches.AddRange(trgLabelMatches);
+
+
+
+
+                            foreach (Match labelMatch in allMatches)
+                            {
+                                if (labelMatch.Groups.Count == 2)
+                                {
+                                    if (!whenValue.StartsWith("/"))
+                                    {
+                                        whenValue = "/" + whenValue;
+                                    }
+                                    FunctionObject functionObject = new FunctionObject();
+                                    functionObject.FunctionURI = whenValue;
+                                    functionObject.FunctionName = labelMatch.Groups[1].Value;
+                                    functionObject.FullURI = iapiCatalogObject.BaseURI  + whenValue;
+                                   
+
+
+
+                                    listFunctionObjectPerMethod.Add(functionObject);
+                                }
+                            }
+                        }
+                    }
+
+                    //Cho những label không thuộc WHEN CASE
+                    var allLabelNameMatches = Regex.Matches(esqlContent, @"labelName\s*=\s*'([^']+)'", RegexOptions.IgnoreCase);
+                    var alltrgLabelMatches = Regex.Matches(esqlContent, @"trgLabel\s*=\s*'([^']+)'", RegexOptions.IgnoreCase);
+                    List<Match> allMatchesNotInWhenCase = new List<Match>();
+                    allMatchesNotInWhenCase.AddRange(allLabelNameMatches);
+                    allMatchesNotInWhenCase.AddRange(alltrgLabelMatches);
+
+                    List<string> labelsNotInWhenThen = new List<string>();
+
+                    foreach (Match labelMatch in allMatchesNotInWhenCase)
+                    {
+                        string labelName = labelMatch.Groups[1].Value;
+                        if (!listFunctionObjectPerMethod.Any(function => function.FunctionName == labelName))
+                        {
+                            labelsNotInWhenThen.Add(labelName);
+                            FunctionObject functionObject = new FunctionObject();
+                            functionObject.FunctionURI = "";
+                            functionObject.FunctionName = labelName;
+                            functionObject.FullURI = iapiCatalogObject.BaseURI;
+                            listFunctionObjectPerMethod.Add(functionObject);
+                        }
+                    }
+
+
+                    foreach (var function in listFunctionObjectPerMethod)
+                    {
+                        string[] transformFiles = Directory.GetFiles(repo, "*" + function.FunctionName + "*.esql", SearchOption.AllDirectories);
+                        function.OperationObjects = new List<OperationObject>();
+                        foreach (string transformFile in transformFiles)
+                        {
+                            if (transformFile.Contains("Rq") || transformFile.Contains("RQ"))
+                            {
+                                string esqlContentTransformFile = File.ReadAllText(transformFile);
+
+                                // Biểu thức chính quy để tìm chuỗi createGBORoot và các đối số của nó
+                                var createGboRootMatches = Regex.Matches(esqlContentTransformFile, @"createGBORoot\s*\(\s*OutputRoot\s*,\s*'([^']+)'\s*,\s*([^,]+)\s*,\s*'([^']+)'\s*\)", RegexOptions.IgnoreCase);
+
+
+                                foreach (Match match in createGboRootMatches)
+                                {
+                                    if (match.Groups.Count == 4)
+                                    {
+                                        string arg1 = match.Groups[1].Value; // 'getSATransByCifRq'
+                                        string arg2 = match.Groups[2].Value; // adpt24in
+                                        string arg3 = match.Groups[3].Value; // 'adpt24in'
+
+                                        OperationObject operationObject = new OperationObject();
+                                        operationObject.GboFunctionName = arg1;
+                                        operationObject.BackendPrefix = arg3;
+                                        function.OperationObjects.Add(operationObject);
+                                    }
+                                }
+                            }
+                            
+                        }
+
+                    }
+
+                    methodObject.FunctionList = listFunctionObjectPerMethod;
+
+                    listMethodObject.Add(methodObject);
+                }
+
+                iapiCatalogObject.MethodList = listMethodObject;
+
+                iapiCatalogObjectList.Add(iapiCatalogObject);
+
+
+            }
+
+            return iapiCatalogObjectList;
+
+
+        }
+    }
+
+}
