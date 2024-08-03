@@ -1,0 +1,18 @@
+using TuanCMQDotNet.ThongKe;
+
+namespace TuanCMQDotNet
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+            IAPICatalog iapiInstance = new IAPICatalog();
+            iapiInstance.CreateIAPICatalog();
+
+            OAPICatalog oapiInstance = new OAPICatalog();
+            oapiInstance.CreateOAPICatalog();
+            Console.WriteLine("Hello, World!");
+        }
+    }
+}
