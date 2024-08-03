@@ -2,3 +2,9 @@
 		CALL createCriteria(trgRoot, 'VPB.INTRODUCER' , srcRoot.vpbIntroducer );
 		CALL createCriteria(trgRoot, 'VPB.INPUTTER' , srcRoot.vpbInputter );
 		CALL createCriteria(trgRoot, 'VPB.AUTHORISER' , srcRoot.vpbAuthoriser );
+
+
+
+SET trgRoot.interestRate =		getCriteriaValue(srcRoot, 'INTEREST.RATE');
+
+SET trgRoot.interestRate =		getCriteriaValue(srcRoot, 'INTEREST.RATE');
