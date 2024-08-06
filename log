@@ -1,10 +1,335 @@
-		CALL createCriteria(trgRoot, 'VPB.NGUYENQUAN' , srcRoot.vpbNguyenQuan );
-		CALL createCriteria(trgRoot, 'VPB.INTRODUCER' , srcRoot.vpbIntroducer );
-		CALL createCriteria(trgRoot, 'VPB.INPUTTER' , srcRoot.vpbInputter );
-		CALL createCriteria(trgRoot, 'VPB.AUTHORISER' , srcRoot.vpbAuthoriser );
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+using TuanCMQDotNet.ThongKe.Object;
+
+namespace TuanCMQDotNet.ThongKe
+{
+    internal class IAPICatalog
+    {
+
+        public void CreateIAPICatalog()
+        {
+            List<CatalogObject> listFinal = GetIAPICatalog();
+
+            List<string> finalText = new List<string>();
+            foreach (var item in listFinal)
+            {
+                foreach (var method in item.MethodList)
+                {
+                    foreach (var function in method.FunctionList)
+                    {
+                        foreach (var operation in function.OperationObjects)
+                        {
+                            finalText.Add(item.AppName
+                                   + ","
+                                   + item.BaseURI
+                                   + ","
+                                   + method.MethodName
+                                    + ","
+                                   + function.FunctionURI
+                                   + ","
+                                   + function.FullURI
+                                   + ","
+                                   + function.FunctionName
+                                   + ","
+                                   + operation.GboFunctionName
+                                   + ","
+                                   + operation.BackendPrefix
+                                   );
+
+                        }
+
+                    }
+
+                }
+
+            }
 
 
 
-SET trgRoot.interestRate =		getCriteriaValue(srcRoot, 'INTEREST.RATE');
 
-SET trgRoot.interestRate =		getCriteriaValue(srcRoot, 'INTEREST.RATE');
+
+            //System.IO.File.WriteAllLines(@"D:\Vpbank\ConvertAdpToJMSOutput\TongHop.txt", finalText.ToArray());
+            using (var file = File.CreateText(@"D:\xxx\IAPI_CATALOG.csv"))
+            {
+                foreach (var arr in finalText)
+                {
+                    file.WriteLine(string.Join(",", arr));
+                }
+            }
+            int i = 0;
+        }
+
+
+        public List<CatalogObject> GetIAPICatalog()
+        {
+            string iapiRepoPath = @"D:\2024\TuanCMQDotNet\TuanCMQDotNet\TuanCMQDotNet\ThongKe\config\listIAPI.txt";
+
+
+            //Khai bao cac object de store
+
+            List<CatalogObject> iapiCatalogObjectList = new List<CatalogObject>();
+
+
+            //Lay ra danh sach cac repo
+            string[] listIAPIRepos = File.ReadAllLines(iapiRepoPath);
+
+            //
+            foreach (string repo in listIAPIRepos)
+            {
+
+                CatalogObject iapiCatalogObject = new CatalogObject();
+                //Lấy ra những file APIRe (HTTPInput trong từng folder)
+                string[] files = Directory.GetFiles(repo, "*Rq.msgflow", SearchOption.AllDirectories);
+
+                if (files.Length <= 0)
+                {
+                    continue;
+                }
+
+                //Mỗi project chỉ có 1 file duy nhất *Rq.msgflow
+                XDocument doc = XDocument.Load(files[0]);
+
+                var urlSpecifiers = doc.Descendants("nodes")
+                                       .Attributes("URLSpecifier")
+                                       .Select(attr => attr.Value);
+
+
+                iapiCatalogObject.AppName = Path.GetFileName(repo.TrimEnd('\\'));
+                iapiCatalogObject.BaseURI = (urlSpecifiers.First());
+                iapiCatalogObject.BaseURI = iapiCatalogObject.BaseURI.Replace("*", "");
+                if (iapiCatalogObject.BaseURI.EndsWith("/"))
+                {
+                    iapiCatalogObject.BaseURI = iapiCatalogObject.BaseURI.Remove(iapiCatalogObject.BaseURI.Length - 1);
+                }
+
+                //Done Primiary object
+
+
+                string[] routeFiles = Directory.GetFiles(repo, "*Rou*.esql", SearchOption.AllDirectories);
+                routeFiles.Concat(Directory.GetFiles(repo, "GET.esql", SearchOption.AllDirectories));
+                routeFiles.Concat(Directory.GetFiles(repo, "POST.esql", SearchOption.AllDirectories));
+                routeFiles.Concat(Directory.GetFiles(repo, "PUT.esql", SearchOption.AllDirectories));
+                routeFiles.Concat(Directory.GetFiles(repo, "PATCH.esql", SearchOption.AllDirectories));
+                routeFiles.Concat(Directory.GetFiles(repo, "DELETE.esql", SearchOption.AllDirectories));
+
+                List<MethodObject> listMethodObject = new List<MethodObject>();
+
+                foreach (var routeFile in routeFiles)
+                {
+                    MethodObject methodObject = new MethodObject();
+
+                    methodObject.MethodName = Path.GetFileName(routeFile.TrimEnd('\\')).ToUpper().Replace("ROUTE", "").Replace("ROUTING", "").Replace("_", "").Replace(".ESQL", "");
+                    if (methodObject.MethodName.Contains("POST"))
+                    {
+                        methodObject.MethodName = "POST";
+                    }
+                    if (methodObject.MethodName.Contains("GET"))
+                    {
+                        methodObject.MethodName = "GET";
+                    }
+                    if (methodObject.MethodName.Contains("PUT"))
+                    {
+                        methodObject.MethodName = "PUT";
+                    }
+                    if (methodObject.MethodName.Contains("DELETE"))
+                    {
+                        methodObject.MethodName = "DELETE";
+                    }
+                    if (methodObject.MethodName.Contains("PATCH"))
+                    {
+                        methodObject.MethodName = "PATCH";
+                    }
+                    string esqlContent = File.ReadAllText(routeFile);
+
+
+                    //Cho những label thuộc WHEN CASE
+                    var whenThenMatches = Regex.Matches(esqlContent, @"WHEN\s+'([^']+)'\s+THEN\s+(.*?)(?=WHEN|END CASE;)", RegexOptions.Singleline | RegexOptions.IgnoreCase);
+
+
+                    List<FunctionObject> listFunctionObjectPerMethod = new List<FunctionObject>();
+                    foreach (Match match in whenThenMatches)
+                    {
+
+
+                        if (match.Groups.Count == 3)
+                        {
+                            string whenValue = match.Groups[1].Value;
+                            string thenBlock = match.Groups[2].Value;
+                            // Biểu thức chính quy để tìm các giá trị labelName trong khối THEN
+                            var labelNameMatches = Regex.Matches(thenBlock, @"labelName\s*=\s*'([^']+)'", RegexOptions.IgnoreCase);
+                            var trgLabelMatches = Regex.Matches(thenBlock, @"trgLabel\s*=\s*'([^']+)'", RegexOptions.IgnoreCase);
+                            List<Match> allMatches = new List<Match>();
+                            allMatches.AddRange(labelNameMatches);
+                            allMatches.AddRange(trgLabelMatches);
+
+
+
+
+
+                            foreach (Match labelMatch in labelNameMatches)
+                            {
+                                if (labelMatch.Groups.Count == 2)
+                                {
+                                    if (!whenValue.StartsWith("/"))
+                                    {
+                                        whenValue = "/" + whenValue;
+                                    }
+                                    FunctionObject functionObject = new FunctionObject();
+                                    functionObject.FunctionURI = whenValue;
+                                    functionObject.FunctionName = labelMatch.Groups[1].Value;
+                                    functionObject.FullURI = iapiCatalogObject.BaseURI + whenValue;
+
+
+                                    listFunctionObjectPerMethod.Add(functionObject);
+                                }
+                            }
+                        }
+                    }
+
+                    //Cho những label không thuộc WHEN CASE
+                    var allLabelNameMatches = Regex.Matches(esqlContent, @"labelName\s*=\s*'([^']+)'", RegexOptions.IgnoreCase);
+                    var alltrgLabelMatches = Regex.Matches(esqlContent, @"trgLabel\s*=\s*'([^']+)'", RegexOptions.IgnoreCase);
+                    List<Match> allMatchesNotInWhenCase = new List<Match>();
+                    allMatchesNotInWhenCase.AddRange(allLabelNameMatches);
+                    allMatchesNotInWhenCase.AddRange(alltrgLabelMatches);
+
+                    List<string> labelsNotInWhenThen = new List<string>();
+
+                    foreach (Match labelMatch in allMatchesNotInWhenCase)
+                    {
+                        string labelName = labelMatch.Groups[1].Value;
+                        if (!listFunctionObjectPerMethod.Any(function => function.FunctionName == labelName))
+                        {
+                            labelsNotInWhenThen.Add(labelName);
+                            FunctionObject functionObject = new FunctionObject();
+                            functionObject.FunctionURI = "";
+                            functionObject.FunctionName = labelName;
+                            functionObject.FullURI = iapiCatalogObject.BaseURI;
+                            listFunctionObjectPerMethod.Add(functionObject);
+                        }
+                    }
+
+                    methodObject.FunctionList = listFunctionObjectPerMethod;
+
+                    listMethodObject.Add(methodObject);
+
+
+
+                }
+
+                iapiCatalogObject.MethodList = listMethodObject;
+
+                iapiCatalogObjectList.Add(iapiCatalogObject);
+
+
+                getLabelAndContent(repo);
+
+
+            }
+
+            return iapiCatalogObjectList;
+
+
+        }
+
+        public  void getLabelAndContent(String repo)
+        {
+
+            string[] msgflowFiles = Directory.GetFiles(repo, "*.msgflow", SearchOption.AllDirectories);
+            string[] subflowFiles = Directory.GetFiles(repo, "*.subflow", SearchOption.AllDirectories);
+
+            List<String> flowFiles = new List<String>();
+            flowFiles.AddRange(msgflowFiles);
+            flowFiles.AddRange(subflowFiles);
+
+            foreach (var flowFile in flowFiles)
+            {
+                XDocument doc = XDocument.Load(flowFile);
+                XNamespace ns = doc.Root.GetDefaultNamespace();
+                // Tạo dictionary để lưu trữ id của các node và giá trị tương ứng
+                var nodes = doc.Descendants()
+                      .Where(e => e.Attribute(XName.Get("id", "http://www.omg.org/XMI")) != null)
+                      .ToDictionary(
+                          e => e.Attribute(XName.Get("id", "http://www.omg.org/XMI")).Value,
+                          e => new
+                          {
+                              LabelName = e.Attribute("labelName")?.Value,
+                              ComputeExpression = e.Attribute("computeExpression")?.Value
+                          }
+                      );
+
+                // Tạo danh sách các cặp dựa trên connection node
+                var connections = doc.Descendants()
+                                     .Where(e => e.Name.LocalName == "connections")
+                                     .Select(e => new
+                                     {
+                                         SourceId = e.Attribute("sourceNode")?.Value,
+                                         TargetId = e.Attribute("targetNode")?.Value
+                                     })
+                                     .ToList();
+
+
+                var pairs = new List<Tuple<string, string>>();
+
+                foreach (var connection in connections)
+                {
+                    if (nodes.ContainsKey(connection.SourceId) && nodes.ContainsKey(connection.TargetId))
+                    {
+                        var sourceNode = nodes[connection.SourceId];
+                        var targetNode = nodes[connection.TargetId];
+
+                        if (sourceNode.LabelName != null && targetNode.ComputeExpression != null)
+                        {
+                            pairs.Add(Tuple.Create(sourceNode.LabelName, targetNode.ComputeExpression));
+                        }
+                    }
+                }
+
+                var esqlFiles = Directory.EnumerateFiles(repo, "*.esql", SearchOption.AllDirectories);
+
+                // Tạo dictionary để lưu trữ id của các node và giá trị tương ứng
+                var nodeLabels = new Dictionary<string, string>();
+
+                // Duyệt qua tất cả các file ESQL để lấy nội dung MODULE
+                foreach (var file in esqlFiles)
+                {
+                    string esqlContent = File.ReadAllText(file);
+
+                    // Regex để tìm các MODULE trong file ESQL
+                    var moduleMatches = Regex.Matches(esqlContent, @"CREATE\s+COMPUTE\s+MODULE\s+([^\s]+)\s+(.*?)\s+END\s+MODULE;", RegexOptions.Singleline);
+
+                    foreach (Match match in moduleMatches)
+                    {
+                        if (match.Groups.Count == 3)
+                        {
+                            string moduleName = match.Groups[1].Value;
+                            string moduleContent = match.Groups[2].Value;
+                            nodeLabels[moduleName] = moduleContent;
+                        }
+                    }
+                }
+
+
+                foreach (var pair in pairs)
+                {
+                    Console.WriteLine($"{pair.Item1} - {pair.Item2}");
+                    if (nodeLabels.ContainsKey(pair.Item2))
+                    {
+                        Console.WriteLine(nodeLabels[pair.Item2]);
+                    }
+                }
+            }
+
+            
+
+
+        }
+    }
+
+}
