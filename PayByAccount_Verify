@@ -1,0 +1,82 @@
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:dp="http://www.datapower.com/extensions" xmlns:regexp="http://exslt.org/regular-expressions" xmlns:dpfunc="http://www.datapower.com/extensions/functions" xmlns:dpconfig="http://www.datapower.com/param/config" extension-element-prefixes="dp dpfunc" exclude-result-prefixes="dp dpconfig dpfunc regexp" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" 
+				xmlns:rain1="http://ap.com/xsd/message/iso20022/rain.001.01" 
+				xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+				 xmlns:urn1="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" 
+				 xmlns:urn="urn:iso:std:iso:20022:tech:xsd:rain.001.001.01"
+				xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+>
+	<xsl:output encoding="UTF-8" indent="yes" method="xml" omit-xml-declaration="yes"/>
+	<xsl:strip-space elements="*"/>
+	<dp:summary xmlns="">
+		<operation>xform</operation>
+		<description>This XSL sets the Context Variables and Routing Variables which will be used by remaining processing rules</description>
+	</dp:summary>
+	<xsl:template match="/">
+		<xsl:apply-templates select="@*|node()"/>
+	</xsl:template>
+	<xsl:template match="@*|node()">
+		<env:Envelope>
+			<xsl:copy-of select="current()/env:Header"/>
+			<xsl:apply-templates select="env:Body"/>
+		</env:Envelope>
+	</xsl:template>
+	<xsl:template match="env:Body">
+		<xsl:variable name="currentBody" select="."/>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('currentBody: ',$currentBody)"/> 
+		</xsl:message>
+		<xsl:variable name="zAppCertificate">name:zappCertificate</xsl:variable>
+		<xsl:variable name="canonicalizationMethod" select="./rain1:RequestPayload/urn1:AppHdr/urn1:Sgntr/ds:Signature/ds:SignedInfo/ds:CanonicalizationMethod/@Algorithm"/>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('canonicalizationMethod: ',$canonicalizationMethod)"/> 
+		</xsl:message>
+		<xsl:variable name="xmlInCanonilizationString" select="dp:canonicalize(./rain1:RequestPayload/urn1:AppHdr/urn1:Sgntr/ds:Signature/ds:SignedInfo, $canonicalizationMethod, '', false() )"/>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('xmlInCanonilizationString: ',$xmlInCanonilizationString)"/> 
+		</xsl:message>
+		<xsl:variable name="signInfoInHash" select="dp:hash( 'http://www.w3.org/2001/04/xmlenc#sha256', $xmlInCanonilizationString)"/>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('signInfoInHash: ',$signInfoInHash)"/> 
+		</xsl:message>
+		<xsl:variable name="signAlgorithm" select="./rain1:RequestPayload/urn1:AppHdr/urn1:Sgntr/ds:Signature/ds:SignedInfo/ds:SignatureMethod/@Algorithm"/>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('signAlgorithm: ',$signAlgorithm)"/> 
+		</xsl:message>
+		<xsl:variable name="signStringFromZapp" select="./rain1:RequestPayload/urn1:AppHdr/urn1:Sgntr/ds:Signature/ds:SignatureValue/text()"/>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('signStringFromZapp: ',$signStringFromZapp)"/> 
+		</xsl:message>
+		<xsl:variable name="isSignStringValid" select="dp:verify($signAlgorithm, $signInfoInHash, $signStringFromZapp, $zAppCertificate )"/>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('isSignStringValid: ',$isSignStringValid)"/> 
+		</xsl:message>
+		<xsl:for-each select="./rain1:RequestPayload/urn1:AppHdr/urn1:Sgntr/ds:Signature/ds:SignedInfo/ds:Reference">
+			<xsl:variable name="id" select="./@URI"/>
+			<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('id: ',$id)"/> 
+
+			<xsl:variable name="currentReference" select="$currentBody//*[contains( $id, @id )]"/>
+			<xsl:message dp:priority="notice">
+				<xsl:value-of select="concat('currentReference: ',$currentReference)"/> 
+			</xsl:message>
+			<xsl:variable name="canonicalizedReference" select="dp:canonicalize( $currentReference[1], $canonicalizationMethod, '', false() )"/>
+			<xsl:message dp:priority="notice">
+				<xsl:value-of select="concat('canonicalizedReference: ',$canonicalizedReference)"/> 
+			</xsl:message>
+			<xsl:variable name="currentHashAlgorithm" select="./ds:DigestMethod/@Algorithm"/>
+			<xsl:message dp:priority="notice">
+				<xsl:value-of select="concat('currentHashAlgorithm: ',$currentHashAlgorithm)"/> 
+			</xsl:message>
+			<xsl:variable name="currentReferenceHashed" select="dp:hash( $currentHashAlgorithm, $canonicalizedReference )"/>
+
+			<xsl:if test="$currentReferenceHashed=./ds:DigestValue/text()">
+				<xsl:message dp:priority="notice">
+					<xsl:value-of select="concat('Ket qua matching Hash  OK')"/> 
+				</xsl:message>
+			</xsl:if>
+
+		</xsl:message>
+		</xsl:for-each>
+
+	</xsl:template>
+</xsl:stylesheet>
