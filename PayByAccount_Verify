@@ -5,8 +5,8 @@
 				 xmlns:urn="urn:iso:std:iso:20022:tech:xsd:rain.001.001.01"
 				xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
 >
-	<xsl:output encoding="UTF-8" indent="yes" method="xml" omit-xml-declaration="yes"/>
-	<xsl:strip-space elements="*"/>
+	<xsl:output encoding="UTF-8" indent="yes" method="text" omit-xml-declaration="no"/>
+	
 	<dp:summary xmlns="">
 		<operation>xform</operation>
 		<description>This XSL sets the Context Variables and Routing Variables which will be used by remaining processing rules</description>
@@ -50,6 +50,7 @@
 		<xsl:message dp:priority="notice">
 			<xsl:value-of select="concat('isSignStringValid: ',$isSignStringValid)"/> 
 		</xsl:message>
+		<!-- Test thu vong for xem co working k
 		<xsl:for-each select="./rain1:RequestPayload/urn1:AppHdr/urn1:Sgntr/ds:Signature/ds:SignedInfo/ds:Reference">
 			<xsl:variable name="id" select="./@URI"/>
 			<xsl:message dp:priority="notice">
@@ -74,9 +75,133 @@
 					<xsl:value-of select="concat('Ket qua matching Hash  OK')"/> 
 				</xsl:message>
 			</xsl:if>
-
-		</xsl:message>
 		</xsl:for-each>
+		-->
 
+		<!-- Check Headers truoc -->
+		<xsl:variable name="AppHdrSectionRef" select="./rain1:RequestPayload/urn1:AppHdr/urn1:Sgntr/ds:Signature/ds:SignedInfo/ds:Reference[@URI='']"/>
+		<xsl:variable name="AppHdrSectionWithSign" select="./rain1:RequestPayload/urn1:AppHdr" />
+
+
+
+		  <xsl:variable name="AppHdrSection">
+			
+				<xsl:apply-templates select="./rain1:RequestPayload/urn1:AppHdr" />
+			
+		</xsl:variable>
+
+
+		<xsl:variable name="canonRef1Canon" select="$AppHdrSectionRef/ds:Transforms/ds:Transform[2]/@Algorithm"/>
+		<xsl:variable name="canonRef1CanonEnvelope" select="$AppHdrSectionRef/ds:Transforms/ds:Transform[1]/@Algorithm"/>
+		<xsl:variable name="canonRef1DigMethod" select="$AppHdrSectionRef/ds:DigestMethod/@Algorithm"/>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('canonRef1DigMethod: ',$canonRef1DigMethod)"/> 
+		</xsl:message>
+		<xsl:variable name="canonRef1DigValue" select="$AppHdrSectionRef/ds:DigestValue/text()"/>
+
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('AppHdrSection: ',dp:canonicalize($AppHdrSection, $canonRef1Canon, '', false() ))"/> 
+		</xsl:message>
+
+		<xsl:variable name="headerHashed" select="dp:hash( $canonRef1DigMethod, dp:canonicalize($AppHdrSection, $canonRef1Canon, '', false()) )"/>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('headerHashed: ',$headerHashed)"/> 
+		</xsl:message>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('canonRef1DigValue: ',$canonRef1DigValue)"/> 
+		</xsl:message>
+		<xsl:if test="$headerHashed=$canonRef1DigValue">
+				<xsl:message dp:priority="notice">
+					<xsl:value-of select="concat('Ket qua matching Hash  OK')"/> 
+				</xsl:message>
+		</xsl:if>
+
+		<!-- Check Document truoc -->
+		<xsl:variable name="DocumentSectionRef" select="./rain1:RequestPayload/urn1:AppHdr/urn1:Sgntr/ds:Signature/ds:SignedInfo/ds:Reference[not(@URI)]"/>
+		<xsl:variable name="DocumentSection" select="./rain1:RequestPayload/urn:Document" />
+		<xsl:variable name="canonRef2Canon" select="$DocumentSectionRef/ds:Transforms/ds:Transform[1]/@Algorithm"/>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('canonRef2Canon: ',$canonRef2Canon)"/> 
+		</xsl:message>
+		<xsl:variable name="canonRef2DigMethod" select="$DocumentSectionRef/ds:DigestMethod/@Algorithm"/>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('canonRef2DigMethod: ',$canonRef2DigMethod)"/> 
+		</xsl:message>
+		<xsl:variable name="canonRef2DigValue" select="$DocumentSectionRef/ds:DigestValue/text()"/>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('canonRef2DigValue: ',$canonRef2DigValue)"/> 
+		</xsl:message>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('DocumentSection: ',dp:canonicalize($DocumentSection, $canonRef2Canon, '', false() ))"/> 
+		</xsl:message>
+
+		<xsl:variable name="documentHashed" select="dp:hash( $canonRef2DigMethod, dp:canonicalize($DocumentSection, $canonRef2Canon, '', false()) )"/>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('documentHashed: ',$documentHashed)"/> 
+		</xsl:message>
+			<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('canonRef2DigValue: ',$canonRef2DigValue)"/> 
+		</xsl:message>
+		<xsl:if test="$documentHashed=$canonRef2DigValue">
+				<xsl:message dp:priority="notice">
+					<xsl:value-of select="concat('Ket qua matching Hash  OK')"/> 
+				</xsl:message>
+		</xsl:if>
+
+
+		<!-- Check KeyInfo truoc -->
+		<xsl:variable name="KeyInfoSectionRef" select="./rain1:RequestPayload/urn1:AppHdr/urn1:Sgntr/ds:Signature/ds:SignedInfo/ds:Reference[starts-with(@URI, '#')]"/>
+		<xsl:variable name="KeyInfoSection" select="./rain1:RequestPayload/urn1:AppHdr/urn1:Sgntr/ds:Signature/ds:KeyInfo" />
+		<xsl:variable name="canonRef3Canon" select="$KeyInfoSectionRef/ds:Transforms/ds:Transform[1]/@Algorithm"/>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('canonRef3Canon: ',$canonRef3Canon)"/> 
+		</xsl:message>
+		<xsl:variable name="canonRef3DigMethod" select="$KeyInfoSectionRef/ds:DigestMethod/@Algorithm"/>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('canonRef3DigMethod: ',$canonRef3DigMethod)"/> 
+		</xsl:message>
+		<xsl:variable name="canonRef3DigValue" select="$KeyInfoSectionRef/ds:DigestValue/text()"/>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('canonRef3DigValue: ',$canonRef3DigValue)"/> 
+		</xsl:message>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('KeyInfoSection: ',dp:canonicalize($KeyInfoSection, $canonRef3Canon, '', false() ))"/> 
+		</xsl:message>
+
+		<xsl:variable name="keyInfoHashed" select="dp:hash( $canonRef3DigMethod, dp:canonicalize($KeyInfoSection, $canonRef3Canon, '', false()) )"/>
+		<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('keyInfoHashed: ',$keyInfoHashed)"/> 
+		</xsl:message>
+			<xsl:message dp:priority="notice">
+			<xsl:value-of select="concat('canonRef3DigValue: ',$canonRef3DigValue)"/> 
+		</xsl:message>
+		<xsl:if test="$keyInfoHashed=$canonRef3DigValue">
+				<xsl:message dp:priority="notice">
+					<xsl:value-of select="concat('Ket qua matching Hash  OK')"/> 
+				</xsl:message>
+		</xsl:if>
 	</xsl:template>
+
+
+	<xsl:template match="urn1:AppHdr">
+		<xsl:copy>
+		  <!-- Apply all child elements except Signature -->
+		  <xsl:apply-templates select="*[local-name() != 'Sgntr']"/>
+		</xsl:copy>
+	  </xsl:template>
+
+  <!-- Default template for copying elements -->
+  <xsl:template match="*">
+    <xsl:copy>
+      <xsl:apply-templates select="@* | node()" />
+    </xsl:copy>
+  </xsl:template>
+
+  <!-- Default template for copying attributes -->
+  <xsl:template match="@*">
+    <xsl:copy />
+  </xsl:template>
+
+
+
 </xsl:stylesheet>
