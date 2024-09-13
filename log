@@ -1,215 +1,51 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:los="http://www.vpbank.com.vn/LOSOut">
-    <soapenv:Header/>
-    <soapenv:Body>
-        <rain1:RequestPayload xmlns:rain1="http://ap.com/xsd/message/iso20022/rain.001.01" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn1="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:urn="urn:iso:std:iso:20022:tech:xsd:rain.001.001.01">
-            <urn1:AppHdr>
-                <urn1:Fr>
-                    <urn1:OrgId>
-                        <urn1:Id>
-                            <urn1:OrgId>
-                                <urn1:Othr>
-                                    <urn1:Id>010035</urn1:Id>
-                                </urn1:Othr>
-                            </urn1:OrgId>
-                        </urn1:Id>
-                    </urn1:OrgId>
-                </urn1:Fr>
-                <urn1:To>
-                    <urn1:OrgId>
-                        <urn1:Id>
-                            <urn1:OrgId>
-                                <urn1:Othr>
-                                    <urn1:Id>ZAPP</urn1:Id>
-                                </urn1:Othr>
-                            </urn1:OrgId>
-                        </urn1:Id>
-                    </urn1:OrgId>
-                </urn1:To>
-                <urn1:BizMsgIdr>AUTQ</urn1:BizMsgIdr>
-                <urn1:MsgDefIdr>rain.001.001.01</urn1:MsgDefIdr>
-                <urn1:BizSvc>RTLFromCFI</urn1:BizSvc>
-                <urn1:CreDt>2020-03-30T14:20:14Z</urn1:CreDt>
-                <urn1:Sgntr>
-                    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
-                        <SignedInfo>
-                            <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
-                            <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
-                            <Reference URI="">
-                                <Transforms>
-                                    <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
-                                    <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
-                                </Transforms>
-                                <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-                                <DigestValue>VZqAzvhP9aakkpPOChtLKYY8vzThMqN8XWWCEnVaMpc=</DigestValue>
-                            </Reference>
-                            <Reference>
-                                <Transforms>
-                                    <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
-                                </Transforms>
-                                <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-                                <DigestValue>Jl+dZnV/k1u+HvPiTES93+Omb8Fa95f0wY7NcJmHzC0=</DigestValue>
-                            </Reference>
-                            <Reference URI="#ide2dfde4a-c3dd-4f16-b47a-468ab386f649">
-                                <Transforms>
-                                    <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
-                                </Transforms>
-                                <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
-                                <DigestValue>Jw+rRmeLJnsvh9AMdOiF2UTVIaAdu1tDt+8evxWJMbU=</DigestValue>
-                            </Reference>
-                        </SignedInfo>
-                        <SignatureValue>XzCZnYNR8kS0Gmb8913EcLUwT++czaFOKhWBBSLEHB3qzAu7w8FRJZKCugfRildCnnFCTcDvX5s0UDE5pHNySxjcLNGhkKVKl0hqc89FvZN1q5e3Dgz8n96qTcciddmxdqDeyfIVM1zhRJTBEzJ6PNTnJcIg5gXPjd3hVQF6lUN14F2gsLZoVo9e+DS3T0M/7XBSMaiYTKAzIDFbbaYhFQY8uC11yeZwp7RGXQJt4opLcJVHpqfSCI9lnBn4JY0fY527PJdqe74Yd6/Za17ez/MPUn2v+fND8iHW2ddmWchq29O3G4Os7CetzqwpatFPvEKjG1w8IXDucJIvUZapaw==</SignatureValue>
-                        <KeyInfo Id="ide2dfde4a-c3dd-4f16-b47a-468ab386f649">
-                            <X509Data>
-                                <X509SKI>h02uts6X9fT4Qs8ISgePLgCwAIg=</X509SKI>
-                            </X509Data>
-                        </KeyInfo>
-                    </Signature>
-                </urn1:Sgntr>
-            </urn1:AppHdr>
-            <urn:Document>
-                <urn:PrsntInitn>
-                    <urn:Hdr>
-                        <urn:MsgFctn>LINK</urn:MsgFctn>
-                        <urn:PrtcolVrsn>001</urn:PrtcolVrsn>
-                        <urn:XchgId>001</urn:XchgId>
-                        <urn:CreDtTm>2020-03-30T14:20:14Z</urn:CreDtTm>
-                        <urn:InitgPty>
-                            <urn:Id>010035</urn:Id>
-                            <urn:Tp>FINI</urn:Tp>
-                        </urn:InitgPty>
-                        <urn:RcptPty>
-                            <urn:Id>ZAPP</urn:Id>
-                            <urn:Tp>SCHM</urn:Tp>
-                        </urn:RcptPty>
-                        <urn:Tracblt>
-                            <urn:RlayId>
-                                <urn:Id>50C3GRVL3</urn:Id>
-                                <urn:Tp>FINI</urn:Tp>
-                            </urn:RlayId>
-                        </urn:Tracblt>
-                    </urn:Hdr>
-                    <urn:PrsntmntReq>
-                        <urn:Envt>
-                            <urn:Acqrr>
-                                <urn:Id>
-                                    <urn:Id>000666</urn:Id>
-                                    <urn:Tp>DSTR</urn:Tp>
-                                </urn:Id>
-                            </urn:Acqrr>
-                            <urn:Mrchnt>
-                                <urn:Id>
-                                    <urn:Id>MERCHANT000050</urn:Id>
-                                    <urn:Tp>MERC</urn:Tp>
-                                    <urn:Issr>DSTR</urn:Issr>
-                                </urn:Id>
-                                <urn:CmonNm>Iceland</urn:CmonNm>
-                            </urn:Mrchnt>
-                            <urn:CstmrFinInst>
-                                <urn:Id>
-                                    <urn:Othr>
-                                        <urn:Id>101016</urn:Id>
-                                        <urn:IdTp>IICA</urn:IdTp>
-                                    </urn:Othr>
-                                </urn:Id>
-                            </urn:CstmrFinInst>
-                            <urn:Customer>
-                                <urn:Id>
-                                    <urn:CstmrNb>4783746</urn:CstmrNb>
-                                    <urn:EmailAdr>rajat.malik@fisglobal.com</urn:EmailAdr>
-                                    <urn:Othr>
-                                        <urn:Id>customerid</urn:Id>
-                                        <urn:IdTp>LNKA</urn:IdTp>
-                                    </urn:Othr>
-                                </urn:Id>
-                                <urn:Nm>
-                                    <urn:NmPrfx>
-                                        <urn:Cd>DOCT</urn:Cd>
-                                    </urn:NmPrfx>
-                                    <urn:GvnNm>John</urn:GvnNm>
-                                    <urn:MddlNm>Allenji</urn:MddlNm>
-                                    <urn:LstNm>Allen</urn:LstNm>
-                                </urn:Nm>
-                                <urn:BllgAdr>
-                                    <urn:FIRegd>true</urn:FIRegd>
-                                    <urn:AdrLine>434324</urn:AdrLine>
-                                    <urn:AdrLine>dfzfdfdffgfg</urn:AdrLine>
-                                </urn:BllgAdr>
-                                <urn:Prfrnc>
-                                    <urn:PayAdvReq>true</urn:PayAdvReq>
-                                    <urn:MxAutoAuthLmt>36</urn:MxAutoAuthLmt>
-                                    <urn:AmntPref>
-                                        <urn:AmntTp>AMTN</urn:AmntTp>
-                                        <urn:SetAmnt Ccy="USD">50</urn:SetAmnt>
-                                    </urn:AmntPref>
-                                    <urn:DtPref>
-                                        <urn:Pymntdt>
-                                            <urn:DtTp>DUED</urn:DtTp>
-                                            <urn:DayofMnth>4</urn:DayofMnth>
-                                        </urn:Pymntdt>
-                                    </urn:DtPref>
-                                    <urn:LnkngPref>
-                                        <urn:IsPrxyLnk>0</urn:IsPrxyLnk>
-                                        <urn:AcctIdrTp>IBAN</urn:AcctIdrTp>
-                                        <urn:LnkAccntRef>ref</urn:LnkAccntRef>
-                                    </urn:LnkngPref>
-                                </urn:Prfrnc>
-                            </urn:Customer>
-                            <urn:Invcee>
-                                <urn:PtyId>
-                                    <urn:Id>
-                                        <urn:PrvtId>
-                                            <urn:BllgactId>Z5Z7SX1AA8D8UTD92FIEHSHQDJLDDD</urn:BllgactId>
-                                        </urn:PrvtId>
-                                    </urn:Id>
-                                </urn:PtyId>
-                                <urn:Nm>
-                                    <urn:GvnNm>GName922777</urn:GvnNm>
-                                    <urn:MddlNm>MName922777</urn:MddlNm>
-                                    <urn:LstNm>LName922777</urn:LstNm>
-                                </urn:Nm>
-                                <urn:PtyAuthParams>
-                                    <urn:CtgryCd>EMAL</urn:CtgryCd>
-                                    <urn:CtgryLbl>email</urn:CtgryLbl>
-                                    <urn:CtgryVal>mahendra.kishore@vocalink.com</urn:CtgryVal>
-                                </urn:PtyAuthParams>
-                            </urn:Invcee>
-                        </urn:Envt>
-                        <urn:Tx>
-                            <urn:TxTp>
-                                <urn:Tp>RGST</urn:Tp>
-                                <urn:AddnlTxTp>NTRQ</urn:AddnlTxTp>
-                            </urn:TxTp>
-                            <urn:PdctTp>
-                                <urn:Tp>BPX</urn:Tp>
-                                <urn:AddnlPdctTp>NTRQ</urn:AddnlPdctTp>
-                            </urn:PdctTp>
-                            <urn:ChckoutTp>NTRQ</urn:ChckoutTp>
-                            <urn:TxId>
-                                <urn:TxDtTm>2020-03-30T14:20:14Z</urn:TxDtTm>
-                                <urn:InitrTxId>GP12984532145388</urn:InitrTxId>
-                            </urn:TxId>
-                            <urn:TxDtls>
-                                <urn:TxAmts>
-                                    <urn:TtlAmt Ccy="USD">10</urn:TtlAmt>
-                                </urn:TxAmts>
-                                <urn:BllgDtls>
-                                    <urn:BllgactId>Z5Z7SX1AA8D8UTD92FIEHSHQDJL7FU</urn:BllgactId>
-                                    <urn:BllgRef>billingReference</urn:BllgRef>
-                                </urn:BllgDtls>
-                            </urn:TxDtls>
-                            <urn:AcctFr>
-                                <urn:AcctNm>DSTR</urn:AcctNm>
-                                <urn:AcctIdr>
-                                    <urn:IsPrxy>0</urn:IsPrxy>
-                                    <urn:Tp>IBAN</urn:Tp>
-                                    <urn:AcctRef>accreff</urn:AcctRef>
-                                    <urn:IBAN>8</urn:IBAN>
-                                </urn:AcctIdr>
-                            </urn:AcctFr>
-                        </urn:Tx>
-                    </urn:PrsntmntReq>
-                </urn:PrsntInitn>
-            </urn:Document>
-        </rain1:RequestPayload>
-    </soapenv:Body>
-</soapenv:Envelope>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header/><soapenv:Body>
+        <ns5:RequestPayload xmlns:ns5="http://ap.com/xsd/message/iso20022/cain.003.01" xmlns:ns2="urn:iso:std:iso:20022:tech:xsd:cain.003.001.01">
+            <urn:AppHdr xmlns:urn1="urn:iso:std:iso:20022:tech:xsd:cain.003.001.01" xmlns:urn="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:ns9="http://ap.mdm.core.com/xsd/common_2" xmlns:ns8="http://ap.mdm.core.com/xsd/managereferencedata_1" xmlns:ns7="http://ap.mdm.core.com/xsd/manageconsumerdata_2" xmlns:ns6="http://ap.mdm.core.com/xsd/messageheader_2" xmlns:ns41="http://ap.mdm.core.com/xsd/distributor_2" xmlns:ns40="http://ap.mdm.core.com/xsd/acknowledgement_2" xmlns:ns39="http://ap.pos.core.com/xsd/soapfault_3" xmlns:ns38="http://ap.com/xsd/message/iso20022/cain.002.01" xmlns:ns37="http://ap.com/xsd/message/iso20022/cain.001.01" xmlns:ns36="http://ap.pos.core.com/xsd/manageoutgoingmessagedata_1" xmlns:ns35="http://ap.com/xsd/posmanagerefunddata_1" xmlns:ns34="http://ap.pos.com/xsd/posmanageexceptiondata_1" xmlns:ns33="http://ap.pos.com/xsd/messageheader" xmlns:ns32="http://ap.security.com/xsd/infracheckhealthstatusdata_1" xmlns:ns31="http://ap.pos.com/xsd/common" xmlns:ns30="http://ap.com/xsd/posmanagepaymentdata_1" xmlns:ns29="http://ap.mdm.core.com/xsd/financialinstitution_2" xmlns:ns27="http://ap.security.com/xsd/messageheaderdata_1" xmlns:ns26="http://ap.mdm.core.com/xsd/messageheader" xmlns:ns24="http://ap.security.com/xsd/managebahcryptodata_1" xmlns:ns22="urn:iso:std:iso:20022:tech:xsd:cain.013.001.01" xmlns:ns21="http://ap.com/xsd/message/iso20022/cain.004.01" xmlns:ns19="http://ap.pos.core.com/xsd/managefiadvice_1" xmlns:ns18="http://ap.pos.core.com/xsd/manageexceptiondata_3" xmlns:ns16="urn:iso:std:iso:20022:tech:xsd:cain.002.001.01" xmlns:ns15="http://ap.pos.core.com/xsd/managepaymentdata_3" xmlns:ns14="http://ap.pos.com/xsd/manageadvicedata_1" xmlns:ns11="urn:iso:std:iso:20022:tech:xsd:cain.004.001.01" xmlns:ns10="http://ap.pos.core.com/xsd/managerefunddata_3" xmlns:msg="http://ap.pos.core.com/xsd/messageheader_3" xmlns:mfa="http://ap.pos.core.com/xsd/retrievecficountrycode_1" xmlns:mec="http://ap.security.com/xsd/manageencryptiondata_1" xmlns:mdd="http://ap.pos.core.com/xsd/managedigitisationdata_3" xmlns:iso="urn:iso:std:iso:20022:tech:xsd:cain.001.001.01" xmlns:fin="http://ap.pos.core.com/xsd/financialinstitution_3" xmlns:cmn="http://ap.pos.core.com/xsd/common_3" xmlns:cain1="http://ap.com/xsd/message/iso20022/cain.004.02" xmlns:cain="http://ap.com/xsd/message/iso20022/cain.003.01"><urn:Fr><urn:FIId><urn:FinInstnId><urn:ClrSysMmbId><urn:MmbId>ZAPP</urn:MmbId></urn:ClrSysMmbId></urn:FinInstnId></urn:FIId></urn:Fr><urn:To><urn:FIId><urn:FinInstnId><urn:ClrSysMmbId><urn:MmbId>010134</urn:MmbId></urn:ClrSysMmbId></urn:FinInstnId></urn:FIId></urn:To><urn:BizMsgIdr>AP13092024172622226503442511427</urn:BizMsgIdr><urn:MsgDefIdr>cain.003.001.01</urn:MsgDefIdr><urn:CreDt>2024-09-13T10:11:05.034Z</urn:CreDt><urn:Sgntr><ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                <ds:SignedInfo>
+                    <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                    <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+                    <ds:Reference URI="">
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>6zl1x0kMwBx2lCmh350t26eA9XFhg0uEs5pboBdZbR8=</ds:DigestValue>
+                    </ds:Reference>
+                    <ds:Reference URI="#03a09c2e-15eb-4617-b8ec-6504a8135de9">
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>YaCOhb+wgADN85QUduWADfFzsSQL/eI7el119Tp9+gM=</ds:DigestValue>
+                    </ds:Reference>
+                    <ds:Reference>
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>TdNTykXV7D0vNZYcylyJJycf2gdxCSB+TwNKF06FtPM=</ds:DigestValue>
+                    </ds:Reference>
+                </ds:SignedInfo>
+                <ds:SignatureValue>
+                    bVK5VpXjLAziS90uN/+rMbvs4C2qy3QBpc/oCLKYxq+JxN4nFfHEG1g/Knedvo8NOK+5ZccrT2Xy&#13;
+                    5SLFu6APdHIv3LAIz5wqZyuxG5+ZGwjUghneFZR52v5beSs8ePAbTbpXIQ3eUc4jE0yiY54O1RRr&#13;
+                    Z3+kHFMZn9xfwLlMffZKODTVBnBxv4wu8SmOiWefll63y983zfjEiMO0d4lZbhS/FGvx0cuAT3I1&#13;
+                    y6KsmZbS/tQie3xxynmYNxbSXJFVeYxMBmAA91LJtmkqPMe1RT1Gkd8O3rQ7/RzGYJnLgJxocEYY&#13;
+                    MLTtDfCMxAE+NL/PFLoWtty1EpCJQXg3LJ2vOQ==
+                </ds:SignatureValue>
+                <ds:KeyInfo Id="03a09c2e-15eb-4617-b8ec-6504a8135de9">
+                    <ds:X509Data>
+                        <ds:X509SKI>
+                            bDb+mscvNYhIt3JRKdYJSpyRfgQ=
+                        </ds:X509SKI>
+                    </ds:X509Data>
+                </ds:KeyInfo>
+            </ds:Signature></urn:Sgntr></urn:AppHdr>
+            <ns2:Document>
+                <urn1:AcqrrFinInitn xmlns:urn1="urn:iso:std:iso:20022:tech:xsd:cain.003.001.01" xmlns:urn="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:ns9="http://ap.mdm.core.com/xsd/common_2" xmlns:ns8="http://ap.mdm.core.com/xsd/managereferencedata_1" xmlns:ns7="http://ap.mdm.core.com/xsd/manageconsumerdata_2" xmlns:ns6="http://ap.mdm.core.com/xsd/messageheader_2" xmlns:ns41="http://ap.mdm.core.com/xsd/distributor_2" xmlns:ns40="http://ap.mdm.core.com/xsd/acknowledgement_2" xmlns:ns39="http://ap.pos.core.com/xsd/soapfault_3" xmlns:ns38="http://ap.com/xsd/message/iso20022/cain.002.01" xmlns:ns37="http://ap.com/xsd/message/iso20022/cain.001.01" xmlns:ns36="http://ap.pos.core.com/xsd/manageoutgoingmessagedata_1" xmlns:ns35="http://ap.com/xsd/posmanagerefunddata_1" xmlns:ns34="http://ap.pos.com/xsd/posmanageexceptiondata_1" xmlns:ns33="http://ap.pos.com/xsd/messageheader" xmlns:ns32="http://ap.security.com/xsd/infracheckhealthstatusdata_1" xmlns:ns31="http://ap.pos.com/xsd/common" xmlns:ns30="http://ap.com/xsd/posmanagepaymentdata_1" xmlns:ns29="http://ap.mdm.core.com/xsd/financialinstitution_2" xmlns:ns27="http://ap.security.com/xsd/messageheaderdata_1" xmlns:ns26="http://ap.mdm.core.com/xsd/messageheader" xmlns:ns24="http://ap.security.com/xsd/managebahcryptodata_1" xmlns:ns22="urn:iso:std:iso:20022:tech:xsd:cain.013.001.01" xmlns:ns21="http://ap.com/xsd/message/iso20022/cain.004.01" xmlns:ns19="http://ap.pos.core.com/xsd/managefiadvice_1" xmlns:ns18="http://ap.pos.core.com/xsd/manageexceptiondata_3" xmlns:ns16="urn:iso:std:iso:20022:tech:xsd:cain.002.001.01" xmlns:ns15="http://ap.pos.core.com/xsd/managepaymentdata_3" xmlns:ns14="http://ap.pos.com/xsd/manageadvicedata_1" xmlns:ns11="urn:iso:std:iso:20022:tech:xsd:cain.004.001.01" xmlns:ns10="http://ap.pos.core.com/xsd/managerefunddata_3" xmlns:msg="http://ap.pos.core.com/xsd/messageheader_3" xmlns:mfa="http://ap.pos.core.com/xsd/retrievecficountrycode_1" xmlns:mec="http://ap.security.com/xsd/manageencryptiondata_1" xmlns:mdd="http://ap.pos.core.com/xsd/managedigitisationdata_3" xmlns:iso="urn:iso:std:iso:20022:tech:xsd:cain.001.001.01" xmlns:fin="http://ap.pos.core.com/xsd/financialinstitution_3" xmlns:cmn="http://ap.pos.core.com/xsd/common_3" xmlns:cain1="http://ap.com/xsd/message/iso20022/cain.004.02" xmlns:cain="http://ap.com/xsd/message/iso20022/cain.003.01"><urn1:Hdr><urn1:MsgFctn>REVV</urn1:MsgFctn><urn1:PrtcolVrsn>1</urn1:PrtcolVrsn><urn1:XchgId>000</urn1:XchgId><urn1:CreDtTm>2024-09-13T10:11:05.034Z</urn1:CreDtTm><urn1:InitgPty><urn1:Id>ZAPP</urn1:Id></urn1:InitgPty><urn1:RcptPty><urn1:Id>010134</urn1:Id></urn1:RcptPty><urn1:Tracblt><urn1:RlayId><urn1:Id>004409</urn1:Id><urn1:Tp>ITAG</urn1:Tp></urn1:RlayId><urn1:TracDtTmIn>2024-09-13T10:11:54Z</urn1:TracDtTmIn><urn1:TracDtTmOut>2024-09-13T10:11:54Z</urn1:TracDtTmOut></urn1:Tracblt></urn1:Hdr><urn1:FinInitn><urn1:Envt><urn1:Acqrr><urn1:Id>004409</urn1:Id></urn1:Acqrr><urn1:Accptr><urn1:Id><urn1:Id>165-80B-1650001</urn1:Id><urn1:Tp>MERC</urn1:Tp></urn1:Id><urn1:CmonNm>MPOS NHATHUOCTHANGDUNG</urn1:CmonNm><urn1:Lctn><urn1:PstlAdr><urn1:PstCd>84</urn1:PstCd><urn1:TwnNm>HA NOI</urn1:TwnNm><urn1:Ctry>VN</urn1:Ctry></urn1:PstlAdr></urn1:Lctn></urn1:Accptr><urn1:Termnl><urn1:Id><urn1:Id>R165A001</urn1:Id></urn1:Id><urn1:Cpblties><urn1:CardRdngCpblties>ECTL</urn1:CardRdngCpblties><urn1:CrdhldrVrfctnCpblties>OTHR</urn1:CrdhldrVrfctnCpblties></urn1:Cpblties></urn1:Termnl><urn1:Card><urn1:PlainCardData><urn1:PAN>2233851399993808</urn1:PAN><urn1:XpryDt>2038-12</urn1:XpryDt></urn1:PlainCardData></urn1:Card><urn1:PmtTkn><urn1:Tkn>5354128299996637</urn1:Tkn><urn1:TknXpryDt>2027-10</urn1:TknXpryDt></urn1:PmtTkn><urn1:Crdhldr><urn1:Id><urn1:CstmrNb>VPBANKPBA313550192</urn1:CstmrNb></urn1:Id></urn1:Crdhldr></urn1:Envt><urn1:Cntxt><urn1:TxCntxt><urn1:CardDataNtryMd>ECTL</urn1:CardDataNtryMd><urn1:SpclConds><urn1:Prgm>RECNID</urn1:Prgm><urn1:Val>RECON1309202401</urn1:Val></urn1:SpclConds><urn1:SpclConds><urn1:Prgm>PMTTYP</urn1:Prgm><urn1:Val>NOT-ACH</urn1:Val></urn1:SpclConds><urn1:SpclConds><urn1:Prgm>RECNDT</urn1:Prgm><urn1:Val>2024-09-13</urn1:Val></urn1:SpclConds><urn1:SpclConds><urn1:Prgm>CURIND</urn1:Prgm><urn1:Val>USD</urn1:Val></urn1:SpclConds><urn1:SpclConds><urn1:Prgm>AMTIND</urn1:Prgm><urn1:Val>5.02</urn1:Val></urn1:SpclConds><urn1:SpclConds><urn1:Prgm>APTRID</urn1:Prgm><urn1:Val>240913704029811873</urn1:Val></urn1:SpclConds><urn1:SpclConds><urn1:Prgm>MCNTID</urn1:Prgm><urn1:Val>704</urn1:Val></urn1:SpclConds><urn1:SpclConds><urn1:Prgm>OBSRSL</urn1:Prgm><urn1:Val>50C 61V </urn1:Val></urn1:SpclConds><urn1:SpclConds><urn1:Prgm>DSRPID</urn1:Prgm><urn1:Val>0</urn1:Val></urn1:SpclConds></urn1:TxCntxt></urn1:Cntxt><urn1:Tx><urn1:TxTp>RFND</urn1:TxTp><urn1:MrchntCtgyCd>9399</urn1:MrchntCtgyCd><urn1:Rcncltn><urn1:RcncltnDt>2024-09-13</urn1:RcncltnDt><urn1:RcncltnId>ACS0STN9O</urn1:RcncltnId></urn1:Rcncltn><urn1:AccptrTxDtTm>2024-09-13T17:11:54Z</urn1:AccptrTxDtTm><urn1:AccptrTxId>425789898883</urn1:AccptrTxId><urn1:InitrTxId>834004</urn1:InitrTxId><urn1:TxLifeCyclId>ACS0STN9O0913  </urn1:TxLifeCyclId><urn1:OrgnlTx><urn1:AccptrTxDtTm>2024-09-13T10:11:54Z</urn1:AccptrTxDtTm><urn1:InitrTxId>834004</urn1:InitrTxId><urn1:InitrId>004409</urn1:InitrId></urn1:OrgnlTx><urn1:TxDtls><urn1:TxAmts><urn1:TtlAmt Ccy="VND">123456</urn1:TtlAmt><urn1:AmtQlfr>ACTL</urn1:AmtQlfr><urn1:CrdhldrBllgTxAmt><urn1:Amt>5.02</urn1:Amt><urn1:XchgRate>0.0000407</urn1:XchgRate><urn1:QtnDt>2024-09-12T00:00:00Z</urn1:QtnDt><urn1:Labl>USD</urn1:Labl></urn1:CrdhldrBllgTxAmt><urn1:RcncltnTxAmt><urn1:Amt>5.02</urn1:Amt><urn1:XchgRate>0.0000407</urn1:XchgRate><urn1:QtnDt>2024-09-12T00:00:00Z</urn1:QtnDt><urn1:Labl>USD</urn1:Labl></urn1:RcncltnTxAmt></urn1:TxAmts><urn1:MsgRsn>ITIM</urn1:MsgRsn><urn1:AcctFr><urn1:AcctIdr><urn1:Othr>12345678</urn1:Othr></urn1:AcctIdr></urn1:AcctFr><urn1:AcctTo><urn1:AcctIdr><urn1:Othr>VPBANKPBA313550192</urn1:Othr></urn1:AcctIdr></urn1:AcctTo></urn1:TxDtls><urn1:AuthstnRslt><urn1:TxRspn><urn1:Rslt>APPR</urn1:Rslt></urn1:TxRspn></urn1:AuthstnRslt></urn1:Tx></urn1:FinInitn><urn1:SctyTrlr><urn1:CnttTp>DATA</urn1:CnttTp><urn1:AuthntcdData><urn1:Rcpt><urn1:KeyIdr><urn1:KeyId>Unused</urn1:KeyId><urn1:KeyVrsn>Unused</urn1:KeyVrsn></urn1:KeyIdr></urn1:Rcpt><urn1:MACAlgo><urn1:Algo>MCCS</urn1:Algo></urn1:MACAlgo><urn1:NcpsltdCntt><urn1:CnttTp>DATA</urn1:CnttTp></urn1:NcpsltdCntt><urn1:MAC>VW51c2Vk</urn1:MAC></urn1:AuthntcdData></urn1:SctyTrlr></urn1:AcqrrFinInitn>
+            </ns2:Document>
+        </ns5:RequestPayload>
+        
+    </soapenv:Body></soapenv:Envelope>
