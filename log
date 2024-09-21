@@ -1,51 +1,31 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-    <soapenv:Header/><soapenv:Body>
-        <ns5:RequestPayload xmlns:ns5="http://ap.com/xsd/message/iso20022/cain.003.01" xmlns:ns2="urn:iso:std:iso:20022:tech:xsd:cain.003.001.01">
-            <urn:AppHdr xmlns:urn1="urn:iso:std:iso:20022:tech:xsd:cain.003.001.01" xmlns:urn="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:ns9="http://ap.mdm.core.com/xsd/common_2" xmlns:ns8="http://ap.mdm.core.com/xsd/managereferencedata_1" xmlns:ns7="http://ap.mdm.core.com/xsd/manageconsumerdata_2" xmlns:ns6="http://ap.mdm.core.com/xsd/messageheader_2" xmlns:ns41="http://ap.mdm.core.com/xsd/distributor_2" xmlns:ns40="http://ap.mdm.core.com/xsd/acknowledgement_2" xmlns:ns39="http://ap.pos.core.com/xsd/soapfault_3" xmlns:ns38="http://ap.com/xsd/message/iso20022/cain.002.01" xmlns:ns37="http://ap.com/xsd/message/iso20022/cain.001.01" xmlns:ns36="http://ap.pos.core.com/xsd/manageoutgoingmessagedata_1" xmlns:ns35="http://ap.com/xsd/posmanagerefunddata_1" xmlns:ns34="http://ap.pos.com/xsd/posmanageexceptiondata_1" xmlns:ns33="http://ap.pos.com/xsd/messageheader" xmlns:ns32="http://ap.security.com/xsd/infracheckhealthstatusdata_1" xmlns:ns31="http://ap.pos.com/xsd/common" xmlns:ns30="http://ap.com/xsd/posmanagepaymentdata_1" xmlns:ns29="http://ap.mdm.core.com/xsd/financialinstitution_2" xmlns:ns27="http://ap.security.com/xsd/messageheaderdata_1" xmlns:ns26="http://ap.mdm.core.com/xsd/messageheader" xmlns:ns24="http://ap.security.com/xsd/managebahcryptodata_1" xmlns:ns22="urn:iso:std:iso:20022:tech:xsd:cain.013.001.01" xmlns:ns21="http://ap.com/xsd/message/iso20022/cain.004.01" xmlns:ns19="http://ap.pos.core.com/xsd/managefiadvice_1" xmlns:ns18="http://ap.pos.core.com/xsd/manageexceptiondata_3" xmlns:ns16="urn:iso:std:iso:20022:tech:xsd:cain.002.001.01" xmlns:ns15="http://ap.pos.core.com/xsd/managepaymentdata_3" xmlns:ns14="http://ap.pos.com/xsd/manageadvicedata_1" xmlns:ns11="urn:iso:std:iso:20022:tech:xsd:cain.004.001.01" xmlns:ns10="http://ap.pos.core.com/xsd/managerefunddata_3" xmlns:msg="http://ap.pos.core.com/xsd/messageheader_3" xmlns:mfa="http://ap.pos.core.com/xsd/retrievecficountrycode_1" xmlns:mec="http://ap.security.com/xsd/manageencryptiondata_1" xmlns:mdd="http://ap.pos.core.com/xsd/managedigitisationdata_3" xmlns:iso="urn:iso:std:iso:20022:tech:xsd:cain.001.001.01" xmlns:fin="http://ap.pos.core.com/xsd/financialinstitution_3" xmlns:cmn="http://ap.pos.core.com/xsd/common_3" xmlns:cain1="http://ap.com/xsd/message/iso20022/cain.004.02" xmlns:cain="http://ap.com/xsd/message/iso20022/cain.003.01"><urn:Fr><urn:FIId><urn:FinInstnId><urn:ClrSysMmbId><urn:MmbId>ZAPP</urn:MmbId></urn:ClrSysMmbId></urn:FinInstnId></urn:FIId></urn:Fr><urn:To><urn:FIId><urn:FinInstnId><urn:ClrSysMmbId><urn:MmbId>010134</urn:MmbId></urn:ClrSysMmbId></urn:FinInstnId></urn:FIId></urn:To><urn:BizMsgIdr>AP13092024172622226503442511427</urn:BizMsgIdr><urn:MsgDefIdr>cain.003.001.01</urn:MsgDefIdr><urn:CreDt>2024-09-13T10:11:05.034Z</urn:CreDt><urn:Sgntr><ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-                <ds:SignedInfo>
-                    <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-                    <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
-                    <ds:Reference URI="">
-                        <ds:Transforms>
-                            <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
-                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-                        </ds:Transforms>
-                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
-                        <ds:DigestValue>6zl1x0kMwBx2lCmh350t26eA9XFhg0uEs5pboBdZbR8=</ds:DigestValue>
-                    </ds:Reference>
-                    <ds:Reference URI="#03a09c2e-15eb-4617-b8ec-6504a8135de9">
-                        <ds:Transforms>
-                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-                        </ds:Transforms>
-                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
-                        <ds:DigestValue>YaCOhb+wgADN85QUduWADfFzsSQL/eI7el119Tp9+gM=</ds:DigestValue>
-                    </ds:Reference>
-                    <ds:Reference>
-                        <ds:Transforms>
-                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
-                        </ds:Transforms>
-                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
-                        <ds:DigestValue>TdNTykXV7D0vNZYcylyJJycf2gdxCSB+TwNKF06FtPM=</ds:DigestValue>
-                    </ds:Reference>
-                </ds:SignedInfo>
-                <ds:SignatureValue>
-                    bVK5VpXjLAziS90uN/+rMbvs4C2qy3QBpc/oCLKYxq+JxN4nFfHEG1g/Knedvo8NOK+5ZccrT2Xy&#13;
-                    5SLFu6APdHIv3LAIz5wqZyuxG5+ZGwjUghneFZR52v5beSs8ePAbTbpXIQ3eUc4jE0yiY54O1RRr&#13;
-                    Z3+kHFMZn9xfwLlMffZKODTVBnBxv4wu8SmOiWefll63y983zfjEiMO0d4lZbhS/FGvx0cuAT3I1&#13;
-                    y6KsmZbS/tQie3xxynmYNxbSXJFVeYxMBmAA91LJtmkqPMe1RT1Gkd8O3rQ7/RzGYJnLgJxocEYY&#13;
-                    MLTtDfCMxAE+NL/PFLoWtty1EpCJQXg3LJ2vOQ==
-                </ds:SignatureValue>
-                <ds:KeyInfo Id="03a09c2e-15eb-4617-b8ec-6504a8135de9">
-                    <ds:X509Data>
-                        <ds:X509SKI>
-                            bDb+mscvNYhIt3JRKdYJSpyRfgQ=
-                        </ds:X509SKI>
-                    </ds:X509Data>
-                </ds:KeyInfo>
-            </ds:Signature></urn:Sgntr></urn:AppHdr>
-            <ns2:Document>
-                <urn1:AcqrrFinInitn xmlns:urn1="urn:iso:std:iso:20022:tech:xsd:cain.003.001.01" xmlns:urn="urn:iso:std:iso:20022:tech:xsd:head.001.001.01" xmlns:ns9="http://ap.mdm.core.com/xsd/common_2" xmlns:ns8="http://ap.mdm.core.com/xsd/managereferencedata_1" xmlns:ns7="http://ap.mdm.core.com/xsd/manageconsumerdata_2" xmlns:ns6="http://ap.mdm.core.com/xsd/messageheader_2" xmlns:ns41="http://ap.mdm.core.com/xsd/distributor_2" xmlns:ns40="http://ap.mdm.core.com/xsd/acknowledgement_2" xmlns:ns39="http://ap.pos.core.com/xsd/soapfault_3" xmlns:ns38="http://ap.com/xsd/message/iso20022/cain.002.01" xmlns:ns37="http://ap.com/xsd/message/iso20022/cain.001.01" xmlns:ns36="http://ap.pos.core.com/xsd/manageoutgoingmessagedata_1" xmlns:ns35="http://ap.com/xsd/posmanagerefunddata_1" xmlns:ns34="http://ap.pos.com/xsd/posmanageexceptiondata_1" xmlns:ns33="http://ap.pos.com/xsd/messageheader" xmlns:ns32="http://ap.security.com/xsd/infracheckhealthstatusdata_1" xmlns:ns31="http://ap.pos.com/xsd/common" xmlns:ns30="http://ap.com/xsd/posmanagepaymentdata_1" xmlns:ns29="http://ap.mdm.core.com/xsd/financialinstitution_2" xmlns:ns27="http://ap.security.com/xsd/messageheaderdata_1" xmlns:ns26="http://ap.mdm.core.com/xsd/messageheader" xmlns:ns24="http://ap.security.com/xsd/managebahcryptodata_1" xmlns:ns22="urn:iso:std:iso:20022:tech:xsd:cain.013.001.01" xmlns:ns21="http://ap.com/xsd/message/iso20022/cain.004.01" xmlns:ns19="http://ap.pos.core.com/xsd/managefiadvice_1" xmlns:ns18="http://ap.pos.core.com/xsd/manageexceptiondata_3" xmlns:ns16="urn:iso:std:iso:20022:tech:xsd:cain.002.001.01" xmlns:ns15="http://ap.pos.core.com/xsd/managepaymentdata_3" xmlns:ns14="http://ap.pos.com/xsd/manageadvicedata_1" xmlns:ns11="urn:iso:std:iso:20022:tech:xsd:cain.004.001.01" xmlns:ns10="http://ap.pos.core.com/xsd/managerefunddata_3" xmlns:msg="http://ap.pos.core.com/xsd/messageheader_3" xmlns:mfa="http://ap.pos.core.com/xsd/retrievecficountrycode_1" xmlns:mec="http://ap.security.com/xsd/manageencryptiondata_1" xmlns:mdd="http://ap.pos.core.com/xsd/managedigitisationdata_3" xmlns:iso="urn:iso:std:iso:20022:tech:xsd:cain.001.001.01" xmlns:fin="http://ap.pos.core.com/xsd/financialinstitution_3" xmlns:cmn="http://ap.pos.core.com/xsd/common_3" xmlns:cain1="http://ap.com/xsd/message/iso20022/cain.004.02" xmlns:cain="http://ap.com/xsd/message/iso20022/cain.003.01"><urn1:Hdr><urn1:MsgFctn>REVV</urn1:MsgFctn><urn1:PrtcolVrsn>1</urn1:PrtcolVrsn><urn1:XchgId>000</urn1:XchgId><urn1:CreDtTm>2024-09-13T10:11:05.034Z</urn1:CreDtTm><urn1:InitgPty><urn1:Id>ZAPP</urn1:Id></urn1:InitgPty><urn1:RcptPty><urn1:Id>010134</urn1:Id></urn1:RcptPty><urn1:Tracblt><urn1:RlayId><urn1:Id>004409</urn1:Id><urn1:Tp>ITAG</urn1:Tp></urn1:RlayId><urn1:TracDtTmIn>2024-09-13T10:11:54Z</urn1:TracDtTmIn><urn1:TracDtTmOut>2024-09-13T10:11:54Z</urn1:TracDtTmOut></urn1:Tracblt></urn1:Hdr><urn1:FinInitn><urn1:Envt><urn1:Acqrr><urn1:Id>004409</urn1:Id></urn1:Acqrr><urn1:Accptr><urn1:Id><urn1:Id>165-80B-1650001</urn1:Id><urn1:Tp>MERC</urn1:Tp></urn1:Id><urn1:CmonNm>MPOS NHATHUOCTHANGDUNG</urn1:CmonNm><urn1:Lctn><urn1:PstlAdr><urn1:PstCd>84</urn1:PstCd><urn1:TwnNm>HA NOI</urn1:TwnNm><urn1:Ctry>VN</urn1:Ctry></urn1:PstlAdr></urn1:Lctn></urn1:Accptr><urn1:Termnl><urn1:Id><urn1:Id>R165A001</urn1:Id></urn1:Id><urn1:Cpblties><urn1:CardRdngCpblties>ECTL</urn1:CardRdngCpblties><urn1:CrdhldrVrfctnCpblties>OTHR</urn1:CrdhldrVrfctnCpblties></urn1:Cpblties></urn1:Termnl><urn1:Card><urn1:PlainCardData><urn1:PAN>2233851399993808</urn1:PAN><urn1:XpryDt>2038-12</urn1:XpryDt></urn1:PlainCardData></urn1:Card><urn1:PmtTkn><urn1:Tkn>5354128299996637</urn1:Tkn><urn1:TknXpryDt>2027-10</urn1:TknXpryDt></urn1:PmtTkn><urn1:Crdhldr><urn1:Id><urn1:CstmrNb>VPBANKPBA313550192</urn1:CstmrNb></urn1:Id></urn1:Crdhldr></urn1:Envt><urn1:Cntxt><urn1:TxCntxt><urn1:CardDataNtryMd>ECTL</urn1:CardDataNtryMd><urn1:SpclConds><urn1:Prgm>RECNID</urn1:Prgm><urn1:Val>RECON1309202401</urn1:Val></urn1:SpclConds><urn1:SpclConds><urn1:Prgm>PMTTYP</urn1:Prgm><urn1:Val>NOT-ACH</urn1:Val></urn1:SpclConds><urn1:SpclConds><urn1:Prgm>RECNDT</urn1:Prgm><urn1:Val>2024-09-13</urn1:Val></urn1:SpclConds><urn1:SpclConds><urn1:Prgm>CURIND</urn1:Prgm><urn1:Val>USD</urn1:Val></urn1:SpclConds><urn1:SpclConds><urn1:Prgm>AMTIND</urn1:Prgm><urn1:Val>5.02</urn1:Val></urn1:SpclConds><urn1:SpclConds><urn1:Prgm>APTRID</urn1:Prgm><urn1:Val>240913704029811873</urn1:Val></urn1:SpclConds><urn1:SpclConds><urn1:Prgm>MCNTID</urn1:Prgm><urn1:Val>704</urn1:Val></urn1:SpclConds><urn1:SpclConds><urn1:Prgm>OBSRSL</urn1:Prgm><urn1:Val>50C 61V </urn1:Val></urn1:SpclConds><urn1:SpclConds><urn1:Prgm>DSRPID</urn1:Prgm><urn1:Val>0</urn1:Val></urn1:SpclConds></urn1:TxCntxt></urn1:Cntxt><urn1:Tx><urn1:TxTp>RFND</urn1:TxTp><urn1:MrchntCtgyCd>9399</urn1:MrchntCtgyCd><urn1:Rcncltn><urn1:RcncltnDt>2024-09-13</urn1:RcncltnDt><urn1:RcncltnId>ACS0STN9O</urn1:RcncltnId></urn1:Rcncltn><urn1:AccptrTxDtTm>2024-09-13T17:11:54Z</urn1:AccptrTxDtTm><urn1:AccptrTxId>425789898883</urn1:AccptrTxId><urn1:InitrTxId>834004</urn1:InitrTxId><urn1:TxLifeCyclId>ACS0STN9O0913  </urn1:TxLifeCyclId><urn1:OrgnlTx><urn1:AccptrTxDtTm>2024-09-13T10:11:54Z</urn1:AccptrTxDtTm><urn1:InitrTxId>834004</urn1:InitrTxId><urn1:InitrId>004409</urn1:InitrId></urn1:OrgnlTx><urn1:TxDtls><urn1:TxAmts><urn1:TtlAmt Ccy="VND">123456</urn1:TtlAmt><urn1:AmtQlfr>ACTL</urn1:AmtQlfr><urn1:CrdhldrBllgTxAmt><urn1:Amt>5.02</urn1:Amt><urn1:XchgRate>0.0000407</urn1:XchgRate><urn1:QtnDt>2024-09-12T00:00:00Z</urn1:QtnDt><urn1:Labl>USD</urn1:Labl></urn1:CrdhldrBllgTxAmt><urn1:RcncltnTxAmt><urn1:Amt>5.02</urn1:Amt><urn1:XchgRate>0.0000407</urn1:XchgRate><urn1:QtnDt>2024-09-12T00:00:00Z</urn1:QtnDt><urn1:Labl>USD</urn1:Labl></urn1:RcncltnTxAmt></urn1:TxAmts><urn1:MsgRsn>ITIM</urn1:MsgRsn><urn1:AcctFr><urn1:AcctIdr><urn1:Othr>12345678</urn1:Othr></urn1:AcctIdr></urn1:AcctFr><urn1:AcctTo><urn1:AcctIdr><urn1:Othr>VPBANKPBA313550192</urn1:Othr></urn1:AcctIdr></urn1:AcctTo></urn1:TxDtls><urn1:AuthstnRslt><urn1:TxRspn><urn1:Rslt>APPR</urn1:Rslt></urn1:TxRspn></urn1:AuthstnRslt></urn1:Tx></urn1:FinInitn><urn1:SctyTrlr><urn1:CnttTp>DATA</urn1:CnttTp><urn1:AuthntcdData><urn1:Rcpt><urn1:KeyIdr><urn1:KeyId>Unused</urn1:KeyId><urn1:KeyVrsn>Unused</urn1:KeyVrsn></urn1:KeyIdr></urn1:Rcpt><urn1:MACAlgo><urn1:Algo>MCCS</urn1:Algo></urn1:MACAlgo><urn1:NcpsltdCntt><urn1:CnttTp>DATA</urn1:CnttTp></urn1:NcpsltdCntt><urn1:MAC>VW51c2Vk</urn1:MAC></urn1:AuthntcdData></urn1:SctyTrlr></urn1:AcqrrFinInitn>
-            </ns2:Document>
-        </ns5:RequestPayload>
-        
-    </soapenv:Body></soapenv:Envelope>
+{
+    "bankCode": "970466",
+    "payType": "01",
+    "item": [
+        {
+            "quantity": "1",
+            "note": "",
+            "qrInfor": "00020101021126300010A00000077501120011900217705204549953037045802VN5909NAUCOFFEE6005HANOI62360320NAUCOFFEE THAI HA 010708NAUCF0026304AF22"
+        }
+    ],
+    "orderCode": "FT24265146181989",
+    "traceTransfer": "FT24265146181989",
+    "mobile": "",
+    "debitAmount": "50000",
+    "realAmount": "50000",
+    "accountNo": "5239********5382",
+    "userName": "NGUYEN VIET TRINH",
+    "respCode": "00",
+    "respDesc": "Success",
+    "msgType": "NOTIFICATION",
+    "payDate": "20240921170233",
+    "addtionalData": "",
+    "appName": "",
+    "addValue": "{\"payMethod\":\"01\",\"typeSource\":\"05\",\"bankCard\":\"02\",\"primaryMobile\":\"\"}",
+    "signature": "PoXKuvARdJGXbTQlDYCz2W4OyY6ul7HaDuVR/de8VOu65Zflx7XtZDuMO2PyvLpNg5hVUYTe9Ci89vcNWooA6e/k3MovZgBlbB1bz+YFO0Q7ASB+nMMKUWVGIoM5Y5ndbbjDwDwqlqf6tmlBBC/UfSJmBqx1FzOp81zR4XdTg8TOHGYC4QE+tFVxlSLf12mgp5KhUelipe8lcAR+xuD60h1t6Ix2Lrj3hu+k2MlkjvaOMHLkaf6RepQXJqG4rFcIpE4acA/GUYrSpS6/zNzgf9sNzLuX1iYPs8/lTdK6EmURipZUYwVYZdJ0tET7CTBfPL95N4ZkLI7BtGTbunb8GQ=="
+}
+
+{
+    "resCode": "04",
+    "resDesc": "Mobile is invalid"
+}
